@@ -16,44 +16,46 @@
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
-				android:text="C'"
+				android:text="C#"
 				android:layout_width="wrap_content"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
-				android:text="D'"
+				android:text="D#"
 				android:layout_width="wrap_content"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
-				android:text="E'"
+				android:text="E#"
+				android:layout_width="wrap_content"
+				android:visibility="invisible"/>
+
+			<Button
+				android:layout_height="wrap_content"
+				style="?android:attr/buttonStyleSmall"
+				android:text="F#"
 				android:layout_width="wrap_content"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
-				android:text="F'"
+				android:text="G#"
 				android:layout_width="wrap_content"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
-				android:text="G'"
+				android:text="A#"
 				android:layout_width="wrap_content"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
-				android:text="A'"
-				android:layout_width="wrap_content"/>
-
-			<Button
-				android:layout_height="wrap_content"
-				style="?android:attr/buttonStyleSmall"
-				android:text="B'"
-				android:layout_width="wrap_content"/>
+				android:text="B#"
+				android:layout_width="wrap_content"
+				android:visibility="invisible"/>
 
 		</TableRow>
 
