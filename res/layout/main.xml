@@ -17,13 +17,15 @@
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="C#"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/cr"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="D#"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/dr"/>
 
 			<Button
 				android:layout_height="wrap_content"
@@ -36,19 +38,22 @@
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="F#"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/fr"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="G#"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/gr"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="A#"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/ar"/>
 
 			<Button
 				android:layout_height="wrap_content"
@@ -67,43 +72,50 @@
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="C"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/c"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="D"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/d"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="E"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/e"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="F"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/f"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="G"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/g"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="A"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/a"/>
 
 			<Button
 				android:layout_height="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:text="B"
-				android:layout_width="wrap_content"/>
+				android:layout_width="wrap_content"
+				android:id="@+id/b"/>
 
 		</TableRow>
 
