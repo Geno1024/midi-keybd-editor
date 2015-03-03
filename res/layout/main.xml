@@ -7,7 +7,7 @@
 
 	<GridLayout
 		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:columnCount="7">
 
 		<Button
@@ -107,6 +107,28 @@
 			android:text="B"
 			android:layout_width="wrap_content"
 			android:id="@+id/b"/>
+
+	</GridLayout>
+
+	<GridLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		rowCount="1"
+		columnCount="1"
+		android:columnCount="2">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="Text"
+			android:layout_width="wrap_content"
+			android:typeface="monospace"
+			android:id="@+id/srccode"/>
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:text="Text"
+			android:layout_width="wrap_content"
+			android:id="@+id/explanation"/>
 
 	</GridLayout>
 
