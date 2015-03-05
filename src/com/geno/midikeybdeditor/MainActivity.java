@@ -28,5 +28,6 @@ public class MainActivity extends Activity
 		ar=(Button)findViewById(R.id.ar);
 		expl=(TextView)findViewById(R.id.explanation);
 		src=(TextView)findViewById(R.id.srccode);
+		
     }
 }
