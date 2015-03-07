@@ -9,6 +9,10 @@ public class MainActivity extends Activity
 {
 	public Button c,d,e,f,g,a,b,cr,dr,fr,gr,ar;
 	public TextView expl,src;
+	public byte[] music;
+	public String[] expla;
+	public int len;
+	public StringBuffer sb;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -28,6 +32,22 @@ public class MainActivity extends Activity
 		ar=(Button)findViewById(R.id.ar);
 		expl=(TextView)findViewById(R.id.explanation);
 		src=(TextView)findViewById(R.id.srccode);
-		
+		init();
+		mainloop();
+		expl.setText(sb.toString());
     }
+
+	void init()
+	{
+		len=0;
+	}
+
+	void mainloop()
+	{
+		len++;
+		music=new byte[len];
+		expla=new String[len];
+		sb=new StringBuffer();
+		sb.append(0xaa55);
+	}
 }
