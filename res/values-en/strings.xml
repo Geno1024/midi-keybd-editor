@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">MIDI Editor</string>
+	<string name="n64">Hemidemisemiquaver</string>
+	<string name="n32">Demisemiquaver</string>
+	<string name="n16">Semiquaver</string>
+	<string name="n8">Quaver</string>
+	<string name="n4">Quarter</string>
+	<string name="n2">Minim</string>
+	<string name="n1">Fullnote</string>
+	<string name="note">Note</string>
+</resources>

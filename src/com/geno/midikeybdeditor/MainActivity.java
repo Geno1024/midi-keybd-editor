@@ -1,8 +1,10 @@
 package com.geno.midikeybdeditor;
 
 import android.app.*;
+import android.content.*;
 import android.os.*;
 import android.view.*;
+import android.view.View.*;
 import android.widget.*;
 
 public class MainActivity extends Activity
@@ -10,7 +12,8 @@ public class MainActivity extends Activity
 	public Button c,d,e,f,g,a,b,cr,dr,fr,gr,ar;
 	public TextView expl,src;
 	public byte[] music;
-	public String[] expla;
+	public String[] expla,timelength;
+	public String n64,n32,n16,n8,n4,n2,n1,note;
 	public int len;
 	public StringBuffer sb;
 	@Override
@@ -18,6 +21,15 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		n64=getString(R.string.n64);
+		n32=getString(R.string.n32);
+		n16=getString(R.string.n16);
+		n8=getString(R.string.n8);
+		n4=getString(R.string.n4);
+		n2=getString(R.string.n2);
+		n1=getString(R.string.n1);
+		note=getString(R.string.note);
+		timelength=new String[] {n64,n32,n16,n8,n4,n2,n1};
 		c=(Button)findViewById(R.id.c);
 		d=(Button)findViewById(R.id.d);
 		e=(Button)findViewById(R.id.e);
@@ -35,6 +47,29 @@ public class MainActivity extends Activity
 		init();
 		mainloop();
 		expl.setText(sb.toString());
+		c.setOnClickListener
+		(new OnClickListener()
+			{
+				@Override
+				public void onClick(View p1)
+				{
+					System.out.println("a");
+					AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this)
+						.setTitle(note)
+						.setItems
+					(timelength, new DialogInterface.OnClickListener()
+						{
+							@Override
+							public void onClick(DialogInterface p1, int p2)
+							{
+								
+							}
+						}
+					);
+					ad.show();
+				}
+			}
+		);
     }
 
 	void init()
