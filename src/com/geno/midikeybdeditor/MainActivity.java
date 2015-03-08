@@ -30,6 +30,7 @@ public class MainActivity extends Activity
 		n1=getString(R.string.n1);
 		note=getString(R.string.note);
 		timelength=new String[] {n64,n32,n16,n8,n4,n2,n1};
+		sb=new StringBuffer();
 		c=(Button)findViewById(R.id.c);
 		d=(Button)findViewById(R.id.d);
 		e=(Button)findViewById(R.id.e);
@@ -45,8 +46,7 @@ public class MainActivity extends Activity
 		expl=(TextView)findViewById(R.id.explanation);
 		src=(TextView)findViewById(R.id.srccode);
 		init();
-		mainloop();
-		expl.setText(sb.toString());
+		mainloop(0x4e556864);	//"MThd"
 		c.setOnClickListener
 		(new OnClickListener()
 			{
@@ -54,9 +54,7 @@ public class MainActivity extends Activity
 				public void onClick(View p1)
 				{
 					System.out.println("a");
-					AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this)
-						.setTitle(note)
-						.setItems
+					AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this).setTitle(note).setItems
 					(timelength, new DialogInterface.OnClickListener()
 						{
 							@Override
@@ -77,12 +75,18 @@ public class MainActivity extends Activity
 		len=0;
 	}
 
-	void mainloop()
+	void mainloop(int i)
 	{
 		len++;
-		music=new byte[len];
-		expla=new String[len];
-		sb=new StringBuffer();
-		sb.append(0xaa55);
+	//	music=new byte[len];
+	//	expla=new String[len];
+		sb.append(Integer.toHexString(i).toUpperCase());
+		expl.setText(sb.toString());
+	}
+
+	void save()
+	{
+		
 	}
 }
+
