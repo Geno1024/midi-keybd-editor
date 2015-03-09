@@ -53,7 +53,6 @@ public class MainActivity extends Activity
 				@Override
 				public void onClick(View p1)
 				{
-					System.out.println("a");
 					AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this).setTitle(note).setItems
 					(timelength, new DialogInterface.OnClickListener()
 						{
@@ -77,9 +76,6 @@ public class MainActivity extends Activity
 
 	void mainloop(int i)
 	{
-		len++;
-	//	music=new byte[len];
-	//	expla=new String[len];
 		sb.append(Integer.toHexString(i).toUpperCase());
 		expl.setText(sb.toString());
 	}
