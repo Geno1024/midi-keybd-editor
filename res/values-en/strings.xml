@@ -9,4 +9,6 @@
 	<string name="n2">Minim</string>
 	<string name="n1">Fullnote</string>
 	<string name="note">Note</string>
+	<string name="remain">Remaining:</string>
+	<string name="nowuse">Now use:</string>
 </resources>
