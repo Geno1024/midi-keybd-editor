@@ -70,9 +70,7 @@ public class MainActivity extends Activity
 							@Override
 							public void onClick(DialogInterface p1, int p2)
 							{
-								byte a=90;
-								byte b=40;
-								mainloop(a,b);
+								mainloop(90,40);
 							}
 						}
 					);
@@ -82,10 +80,11 @@ public class MainActivity extends Activity
 		);
     }
 
-	void mainloop(byte note,byte length)
+	void mainloop(int note,int length)
 	{
-		midi.put(note);
-		midi.put(length);
+		
+		midi.put(Byte.parseByte(String.valueOf(note)));
+		midi.put(Byte.parseByte(String.valueOf(length)));
 		detail.setText(remain+midi.remaining()+use+midi.position());
 	}
 }
