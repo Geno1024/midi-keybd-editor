@@ -71,5 +71,22 @@ public class MainActivity extends Activity
 	{
 		
 	}
+
+	int noteid()
+	{
+		int a = 0;
+		AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this).setTitle(note).setItems
+		(new String[]{"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"}, new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					
+				}
+			}
+		);
+		ad.show();
+		return a;
+	}
 }
 
