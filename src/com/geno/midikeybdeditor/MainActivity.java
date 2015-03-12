@@ -14,10 +14,16 @@ public class MainActivity extends Activity
 	public TextView expl,src,detail,addevent;
 	public byte[] music;
 	public String[] expla,selectevent;
-	public String note,remain,use,event;
+	public String note,remain,use,event,confirm,cancel;
 	public StringBuffer sb;
 	public ByteBuffer midi;
 	public static int notelength;
+	
+	//	These value are for functions
+	public byte notevalue;
+	public String[] notedefinedname = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
+	public String[] note12 = {};
+
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -29,6 +35,8 @@ public class MainActivity extends Activity
 		remain = getString(R.string.remain);
 		use = getString(R.string.nowuse);
 		event = getString(R.string.event);
+		confirm = getString(R.string.confirm);
+		cancel = getString(R.string.cancel);
 		selectevent = new String[]{getString(R.string.eventid8)};
 
 	//	Get layout id
@@ -58,6 +66,12 @@ public class MainActivity extends Activity
 							public void onClick(DialogInterface p1, int p2)
 							{
 								eventchk(p2);
+								noteid();
+								if(notevalue != -1)
+								{
+									midi.put(notevalue);
+								}
+								update();
 							}
 						}
 					);
@@ -72,21 +86,47 @@ public class MainActivity extends Activity
 		
 	}
 
-	int noteid()
+	void update()
 	{
-		int a = 0;
-		AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this).setTitle(note).setItems
-		(new String[]{"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"}, new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface p1, int p2)
+		detail.setText(remain+midi.remaining()+use+midi.position());
+	}
+
+	byte noteid()
+	{
+		notevalue = -1;
+		AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this)
+		.setTitle(note)
+		.setItems
+			(notedefinedname,new DialogInterface.OnClickListener()
 				{
-					
+					@Override
+					public void onClick(DialogInterface p1, int p2)
+					{
+						notevalue = (byte) (0x3c + p2);
+					}
 				}
-			}
-		);
+			)
+/*		.setPositiveButton
+			(confirm,new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface p1, int p2)
+					{}
+				}
+			)
+		.setNegativeButton
+			(cancel,new DialogInterface.OnClickListener()
+				{
+					@Override
+					public void onClick(DialogInterface p1, int p2)
+					{
+						notevalue = -1;
+					}
+				}
+			)*/;
 		ad.show();
-		return a;
+		Toast.makeText(MainActivity.this,notevalue+"",Toast.LENGTH_SHORT).show();
+		return notevalue;
 	}
 }
 
