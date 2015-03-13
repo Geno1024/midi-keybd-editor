@@ -81,7 +81,7 @@ public class MainActivity extends Activity
 	void update()
 	{
 		midi.put(eventnotebuffer);
-		detail.setText(ubtosb(0x80)+"@"+ubtosb(0xff)+remain+midi.remaining()+use+midi.position());
+		detail.setText(remain+midi.remaining()+use+midi.position());
 	}
 
 	void eventchk(int eventid)
@@ -126,7 +126,7 @@ public class MainActivity extends Activity
 	byte ubtosb(int unsigned)
 	{
 		//	Unsigned byte to signed byte
-		return unsigned < 128 ? (byte)unsigned : (byte)(128-unsigned);
+		return unsigned < 128 ? (byte)unsigned : (byte)(unsigned-256);
 	}
 }
 
