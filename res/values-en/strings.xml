@@ -2,6 +2,7 @@
 <resources>
 	<string name="app_name">MIDI Editor</string>
 	<string name="note">Note</string>
+	<string name="velocity">Velocity</string>
 	<string name="remain">Remaining:</string>
 	<string name="nowuse">Now use:</string>
 	<string name="event">Event</string>
