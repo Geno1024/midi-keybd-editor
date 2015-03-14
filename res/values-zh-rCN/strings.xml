@@ -6,8 +6,10 @@
 	<string name="remain">剩余：</string>
 	<string name="nowuse">已用：</string>
 	<string name="event">事件</string>
+	<string name="track">音轨</string>
 	<string name="addevent">添加事件</string>
 	<string name="eventid8">键盘释放事件</string>
+	<string name="eventid9">键盘按下事件</string>
 	<string name="confirm">确认</string>
 	<string name="cancel">取消</string>
 </resources>

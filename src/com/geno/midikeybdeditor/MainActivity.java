@@ -20,7 +20,7 @@ public class MainActivity extends Activity
 	
 	//	These value are for functions
 	public byte eventvalue,notevalue,notelengthvalue;
-	public byte[] eventdefinedvalue = {ubtosb(0x80)};
+	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90)};
 	public ByteBuffer eventnotebuffer;
 	public String[] notedefinedname = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
 	public String[] note12 = {"8x -5","8x -4","8x -3","8x -2","8x -1","8x ±0","8x +1","8x +2","8x +3","8x +4","8x +5"};
@@ -39,7 +39,7 @@ public class MainActivity extends Activity
 		confirm = getString(R.string.confirm);
 		cancel = getString(R.string.cancel);
 		velocity = getString(R.string.velocity);
-		selectevent = new String[]{getString(R.string.eventid8)};
+		selectevent = new String[]{getString(R.string.eventid8),getString(R.string.eventid9)};
 
 	//	Get layout id
 		expl = (TextView)findViewById(R.id.explanation);
@@ -78,6 +78,7 @@ public class MainActivity extends Activity
 		);
     }
 
+	//Many necessary functions
 	void update()
 	{
 		midi.put(eventnotebuffer);
@@ -86,8 +87,22 @@ public class MainActivity extends Activity
 
 	void eventchk(int eventid)
 	{
+		final EditText t = new EditText(MainActivity.this);
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle(R.string.track)
+		.setView(t)
+		.setPositiveButton
+		(R.string.confirm,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					noteid();
+				}
+			}
+		);
+		ad.show();
 		eventnotebuffer.put(eventdefinedvalue[eventid]);
-		noteid();
 	}
 
 	void noteid()
@@ -102,19 +117,28 @@ public class MainActivity extends Activity
 					public void onClick(DialogInterface p1, int p2)
 					{
 						notevalue = (byte) (0x3c + p2);
+						AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+						.setTitle("")
+						.setItems
+							(note12,new DialogInterface.OnClickListener()
+								{
+									@Override
+									public void onClick(DialogInterface p1,int p2)
+									{
+										notevalue = ubtosb(notevalue + ( p2 - 5 ) * 12);
+										if(notevalue!=-1)
+											eventnotebuffer.put(notevalue);
+									}
+								}
+							);
+						ad.show();
 						Toast.makeText(MainActivity.this,notevalue+"",Toast.LENGTH_SHORT).show();
-						if(notevalue!=-1)
-							eventnotebuffer.put(notevalue);
 						update();
-						notelength();
+					//	notelength();
 					}
 				}
 			);
 		ad.show();
-	}
-
-	void note12()
-	{
 	}
 
 	void notelength()

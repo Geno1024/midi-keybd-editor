@@ -6,8 +6,10 @@
 	<string name="remain">Remaining:</string>
 	<string name="nowuse">Now use:</string>
 	<string name="event">Event</string>
+	<string name="track">Track</string>
 	<string name="addevent">Add event</string>
 	<string name="eventid8">Note OFF event</string>
+	<string name="eventid9">Note ON event</string>
 	<string name="confirm">Confirm</string>
 	<string name="cancel">Cancel</string>
 </resources>
