@@ -23,6 +23,7 @@ public class MainActivity extends Activity
 	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
 	public ByteBuffer eventnotebuffer;
 	public String[] notedefinedname = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
+	public String[] trackno = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
 	public String[] note12 = {"8x -5","8x -4","8x -3","8x -2","8x -1","8x ±0","8x +1","8x +2","8x +3","8x +4","8x +5"};
 
 	/*	This integer is an important flag in this program
@@ -94,30 +95,29 @@ public class MainActivity extends Activity
 	//Many necessary functions
 	void update()
 	{
+		eventnotebuffer.position(0);
 		midi.put(eventnotebuffer);
 		detail.setText(remain+midi.remaining()+use+midi.position());
+		expl.setText(printbyte(midi));
 	}
 
-	void eventchk(int eventid)
+	void eventchk(final int eventid)
 	{
 		eventnotebuffer.position(0);
-		final EditText t = new EditText(MainActivity.this);
-		t.setInputType(InputType.TYPE_CLASS_NUMBER);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.track)
-		.setView(t)
-		.setPositiveButton
-		(R.string.confirm,new DialogInterface.OnClickListener()
+		.setItems
+		(trackno,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
 				{
+					eventnotebuffer.put((byte)(eventdefinedvalue[eventid]+p2));
 					noteid();
 				}
 			}
 		);
 		ad.show();
-		//eventnotebuffer.put(eventdefinedvalue[eventid]);
 	}
 
 	void noteid()
@@ -142,11 +142,7 @@ public class MainActivity extends Activity
 									{
 										notevalue = ubtosb(notevalue + ( p2 - 5 ) * 12);
 										if(notevalue!=-1)
-											{
-												Toast.makeText(MainActivity.this,notevalue+"",Toast.LENGTH_SHORT).show();
-												
-												update();
-											}
+											eventnotebuffer.put(notevalue);
 										if(flag==1)
 											velocity();
 									}
@@ -174,6 +170,7 @@ public class MainActivity extends Activity
 				public void onClick(DialogInterface p1, int p2)
 				{
 					eventnotebuffer.put((byte)Integer.parseInt(t.getText().toString()));
+					update();
 				}
 			}
 		);
@@ -184,6 +181,24 @@ public class MainActivity extends Activity
 	{
 		//	Unsigned byte to signed byte
 		return unsigned < 128 ? (byte)unsigned : (byte)(unsigned-256);
+	}
+
+	String printbyte(ByteBuffer b)
+	{
+		String res = "";
+		int i;
+		for(i=0;i<b.position();i++)
+		{
+			String buf = Integer.toHexString(b.get(i)).toUpperCase();
+			if(buf.length()<2)
+				buf="0"+buf;
+			if(buf.contains("ffffff")==false)
+				res=res+buf;
+			else
+				res=res+buf.substring(6,8);
+			res=res+" ";
+		}
+		return res;
 	}
 }
 
