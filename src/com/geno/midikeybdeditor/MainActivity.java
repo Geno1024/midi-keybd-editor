@@ -20,10 +20,22 @@ public class MainActivity extends Activity
 	
 	//	These value are for functions
 	public byte eventvalue,notevalue,notelengthvalue;
-	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90)};
+	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
 	public ByteBuffer eventnotebuffer;
 	public String[] notedefinedname = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
 	public String[] note12 = {"8x -5","8x -4","8x -3","8x -2","8x -1","8x ±0","8x +1","8x +2","8x +3","8x +4","8x +5"};
+
+	/*	This integer is an important flag in this program
+	*	for checking if this nesting functions below
+	*	is triggered by editing an event or creating an event
+	*	former 0 latter 1
+	*	it will be all 1 before editing function completed
+	*	later will be changed into either 0 or 1
+	*	it maybe 2 or more later
+	*	when function increases
+	*	so I didn't make it Boolean
+	*/
+	public int flag;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -39,7 +51,7 @@ public class MainActivity extends Activity
 		confirm = getString(R.string.confirm);
 		cancel = getString(R.string.cancel);
 		velocity = getString(R.string.velocity);
-		selectevent = new String[]{getString(R.string.eventid8),getString(R.string.eventid9)};
+		selectevent = new String[]{getString(R.string.eventid8),getString(R.string.eventid9),getString(R.string.eventidA),getString(R.string.eventidB),getString(R.string.eventidC),getString(R.string.eventidD),getString(R.string.eventidE)};
 
 	//	Get layout id
 		expl = (TextView)findViewById(R.id.explanation);
@@ -68,6 +80,7 @@ public class MainActivity extends Activity
 							@Override
 							public void onClick(DialogInterface p1, int p2)
 							{
+								flag=1;
 								eventchk(p2);
 							}
 						}
@@ -102,7 +115,7 @@ public class MainActivity extends Activity
 			}
 		);
 		ad.show();
-		eventnotebuffer.put(eventdefinedvalue[eventid]);
+		//eventnotebuffer.put(eventdefinedvalue[eventid]);
 	}
 
 	void noteid()
@@ -126,15 +139,16 @@ public class MainActivity extends Activity
 									public void onClick(DialogInterface p1,int p2)
 									{
 										notevalue = ubtosb(notevalue + ( p2 - 5 ) * 12);
-										if(notevalue!=-1)
-											eventnotebuffer.put(notevalue);
+										if(notevalue!=-1){}
+//											eventnotebuffer.put(notevalue);
+										if(flag==1)
+											notelength();
 									}
 								}
 							);
 						ad.show();
 						Toast.makeText(MainActivity.this,notevalue+"",Toast.LENGTH_SHORT).show();
 						update();
-					//	notelength();
 					}
 				}
 			);
@@ -143,7 +157,8 @@ public class MainActivity extends Activity
 
 	void notelength()
 	{
-		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this).setTitle(R.string.velocity);
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle(R.string.velocity);
 		ad.show();
 	}
 

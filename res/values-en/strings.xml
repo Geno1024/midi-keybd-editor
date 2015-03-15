@@ -8,8 +8,13 @@
 	<string name="event">Event</string>
 	<string name="track">Track</string>
 	<string name="addevent">Add event</string>
-	<string name="eventid8">Note OFF event</string>
-	<string name="eventid9">Note ON event</string>
+	<string name="eventid8">8x Note Off Event</string>
+	<string name="eventid9">9x Note On Event</string>
+	<string name="eventidA">Ax Polyphonic Key Pressure</string>
+	<string name="eventidB">Bx Control Change</string>
+	<string name="eventidC">Cx Program Change</string>
+	<string name="eventidD">Dx Channel Pressure</string>
+	<string name="eventidE">Ex Pitch Bend Change</string>
 	<string name="confirm">Confirm</string>
 	<string name="cancel">Cancel</string>
 </resources>

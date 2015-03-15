@@ -8,8 +8,13 @@
 	<string name="event">事件</string>
 	<string name="track">音轨</string>
 	<string name="addevent">添加事件</string>
-	<string name="eventid8">键盘释放事件</string>
-	<string name="eventid9">键盘按下事件</string>
+	<string name="eventid8">8x 键盘释放事件</string>
+	<string name="eventid9">9x 键盘按下事件</string>
+	<string name="eventidA">Ax 触摸键盘之后事件</string>
+	<string name="eventidB">Bx 调换控制事件</string>
+	<string name="eventidC">Cx 程序调换事件</string>
+	<string name="eventidD">Dx 通道接触事件</string>
+	<string name="eventidE">Ex 弯音事件</string>
 	<string name="confirm">确认</string>
 	<string name="cancel">取消</string>
 </resources>
