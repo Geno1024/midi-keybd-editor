@@ -19,6 +19,7 @@ public class MainActivity extends Activity
 	public static int notelength;
 	
 	//	These value are for functions
+	public boolean justopen;
 	public byte eventvalue,notevalue,notelengthvalue;
 	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
 	public ByteBuffer eventnotebuffer;
@@ -60,13 +61,20 @@ public class MainActivity extends Activity
 		detail = (TextView)findViewById(R.id.detail);
 		addevent = (Button)findViewById(R.id.addevent);
 
+	//	Init variables
+		justopen = true;
+
 	//	Get byte buffer for editing
 		sb = new StringBuffer();
 		midi = ByteBuffer.allocate(1048576);
 		eventnotebuffer = ByteBuffer.allocate(3);
 		byte[] head = {0x4D,0x54,0x68,0x64,0x0,0x0,0x0,0x6};
 		midi.put(head);
-		detail.setText(remain+midi.remaining()+use+midi.position());
+
+	//	Init display
+		detail.setText(remain+midi.remaining()+" "+use+midi.position());
+		update();
+		justopen = false;
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -95,10 +103,18 @@ public class MainActivity extends Activity
 	//Many necessary functions
 	void update()
 	{
+		if(!justopen)
+		{
+			addevent();
+		}
+		detail.setText(remain+midi.remaining()+use+midi.position());
+		src.setText(printbyte(midi));
+	}
+
+	void addevent()
+	{
 		eventnotebuffer.position(0);
 		midi.put(eventnotebuffer);
-		detail.setText(remain+midi.remaining()+use+midi.position());
-		expl.setText(printbyte(midi));
 	}
 
 	void eventchk(final int eventid)
@@ -183,6 +199,10 @@ public class MainActivity extends Activity
 		return unsigned < 128 ? (byte)unsigned : (byte)(unsigned-256);
 	}
 
+	/*	This function is now very simple
+	*	but later it will have its responsibility
+	*	of DECODING A MIDI
+	*/
 	String printbyte(ByteBuffer b)
 	{
 		String res = "";
@@ -192,7 +212,7 @@ public class MainActivity extends Activity
 			String buf = Integer.toHexString(b.get(i)).toUpperCase();
 			if(buf.length()<2)
 				buf="0"+buf;
-			if(buf.contains("ffffff")==false)
+			if(buf.contains("FFFFFF")==false)
 				res=res+buf;
 			else
 				res=res+buf.substring(6,8);
