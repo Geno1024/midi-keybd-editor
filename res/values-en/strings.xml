@@ -7,7 +7,10 @@
 	<string name="nowuse">Now use:</string>
 	<string name="event">Event</string>
 	<string name="track">Track</string>
-	<string name="addevent">Add event</string>
+	<string name="addmidievent">Add MIDI Event</string>
+	<string name="addmetaevent">Add Meta event</string>
+	<string name="note12">High/Low</string>
+	<string name="velocityintro">0 ~ 127</string>
 	<string name="eventid8">8x Note Off Event</string>
 	<string name="eventid9">9x Note On Event</string>
 	<string name="eventidA">Ax Polyphonic Key Pressure</string>

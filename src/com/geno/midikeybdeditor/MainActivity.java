@@ -7,7 +7,7 @@ import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import java.nio.*;
-import java.util.*;
+import android.text.*;
 
 public class MainActivity extends Activity
 {
@@ -100,7 +100,9 @@ public class MainActivity extends Activity
 
 	void eventchk(int eventid)
 	{
+		eventnotebuffer.position(0);
 		final EditText t = new EditText(MainActivity.this);
+		t.setInputType(InputType.TYPE_CLASS_NUMBER);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.track)
 		.setView(t)
@@ -131,7 +133,7 @@ public class MainActivity extends Activity
 					{
 						notevalue = (byte) (0x3c + p2);
 						AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-						.setTitle("")
+						.setTitle(R.string.note12)
 						.setItems
 							(note12,new DialogInterface.OnClickListener()
 								{
@@ -139,26 +141,42 @@ public class MainActivity extends Activity
 									public void onClick(DialogInterface p1,int p2)
 									{
 										notevalue = ubtosb(notevalue + ( p2 - 5 ) * 12);
-										if(notevalue!=-1){}
-//											eventnotebuffer.put(notevalue);
+										if(notevalue!=-1)
+											{
+												Toast.makeText(MainActivity.this,notevalue+"",Toast.LENGTH_SHORT).show();
+												
+												update();
+											}
 										if(flag==1)
-											notelength();
+											velocity();
 									}
 								}
 							);
 						ad.show();
-						Toast.makeText(MainActivity.this,notevalue+"",Toast.LENGTH_SHORT).show();
-						update();
 					}
 				}
 			);
 		ad.show();
 	}
 
-	void notelength()
+	void velocity()
 	{
+		final EditText t = new EditText(MainActivity.this);
+		t.setInputType(InputType.TYPE_CLASS_NUMBER);
+		t.setHint(R.string.velocityintro);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-		.setTitle(R.string.velocity);
+		.setTitle(R.string.velocity)
+		.setView(t)
+		.setPositiveButton
+		(R.string.confirm,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					eventnotebuffer.put((byte)Integer.parseInt(t.getText().toString()));
+				}
+			}
+		);
 		ad.show();
 	}
 

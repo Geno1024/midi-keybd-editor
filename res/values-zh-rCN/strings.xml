@@ -7,7 +7,10 @@
 	<string name="nowuse">已用：</string>
 	<string name="event">事件</string>
 	<string name="track">音轨</string>
-	<string name="addevent">添加事件</string>
+	<string name="addmidievent">添加MIDI事件</string>
+	<string name="addmetaevent">添加元事件</string>
+	<string name="note12">高低八度</string>
+	<string name="velocityintro">0 ~ 127</string>
 	<string name="eventid8">8x 键盘释放事件</string>
 	<string name="eventid9">9x 键盘按下事件</string>
 	<string name="eventidA">Ax 触摸键盘之后事件</string>
