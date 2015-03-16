@@ -8,6 +8,7 @@ import android.view.View.*;
 import android.widget.*;
 import java.nio.*;
 import android.text.*;
+import java.io.*;
 
 public class MainActivity extends Activity
 {
@@ -18,7 +19,7 @@ public class MainActivity extends Activity
 	public ByteBuffer midi;
 	public static int notelength;
 	
-	//	These value are for functions
+	//	These values are for functions
 	public boolean justopen;
 	public byte eventvalue,notevalue,notelengthvalue;
 	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
@@ -74,8 +75,12 @@ public class MainActivity extends Activity
 	//	Init display
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
 		update();
+		WindowManager m=(WindowManager) getSystemService(WINDOW_SERVICE);
+		expl.setWidth(m.getDefaultDisplay().getWidth()/2);
+		src.setWidth(m.getDefaultDisplay().getWidth()/2);
 		justopen = false;
 
+		save();
 	//	Edit widget
 		addevent.setOnClickListener
 		(new OnClickListener()
@@ -138,7 +143,6 @@ public class MainActivity extends Activity
 
 	void noteid()
 	{
-		notevalue = -1;
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.note)
 		.setItems
@@ -157,8 +161,7 @@ public class MainActivity extends Activity
 									public void onClick(DialogInterface p1,int p2)
 									{
 										notevalue = ubtosb(notevalue + ( p2 - 5 ) * 12);
-										if(notevalue!=-1)
-											eventnotebuffer.put(notevalue);
+										eventnotebuffer.put(notevalue);
 										if(flag==1)
 											velocity();
 									}
@@ -176,6 +179,7 @@ public class MainActivity extends Activity
 		final EditText t = new EditText(MainActivity.this);
 		t.setInputType(InputType.TYPE_CLASS_NUMBER);
 		t.setHint(R.string.velocityintro);
+		t.setText("64");
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.velocity)
 		.setView(t)
@@ -185,7 +189,12 @@ public class MainActivity extends Activity
 				@Override
 				public void onClick(DialogInterface p1, int p2)
 				{
-					eventnotebuffer.put((byte)Integer.parseInt(t.getText().toString()));
+					try
+					{
+						eventnotebuffer.put((byte)Integer.parseInt(t.getText().toString()));
+					}
+					catch(Exception e)
+					{}
 					update();
 				}
 			}
@@ -219,6 +228,54 @@ public class MainActivity extends Activity
 			res=res+" ";
 		}
 		return res;
+	}
+
+	void save()
+	{
+		final EditText t = new EditText(MainActivity.this);
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle("Save")
+		.setView(t)
+		.setPositiveButton
+		(R.string.confirm,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					File f = new File(t.getText().toString());
+					OutputStream o = null;
+					try
+					{
+						o = new BufferedOutputStream(new FileOutputStream(f));
+					}
+					catch (FileNotFoundException e)
+					{}
+					ByteBuffer b = null;
+					b = ByteBuffer.allocate(midi.position());
+					try
+					{
+						o.write(b.array());
+						if(o!=null)
+						{
+							o.close();
+						}
+					}
+					catch (IOException e)
+					{}
+					Toast.makeText(MainActivity.this,"Finish!",Toast.LENGTH_SHORT).show();
+				}
+			}
+		).setNegativeButton
+		(R.string.cancel,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					
+				}
+			}
+		);
+		ad.show();
 	}
 }
 

@@ -47,12 +47,14 @@
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
 			android:typeface="monospace"
-			android:id="@+id/srccode"/>
+			android:id="@+id/srccode"
+			android:singleLine="false"/>
 
 		<TextView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:id="@+id/explanation"/>
+			android:id="@+id/explanation"
+			android:singleLine="false"/>
 
 	</GridLayout>
 
