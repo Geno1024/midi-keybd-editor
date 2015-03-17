@@ -20,7 +20,6 @@ public class MainActivity extends Activity
 	public static int notelength;
 	
 	//	These values are for functions
-	public boolean justopen;
 	public byte eventvalue,notevalue,notelengthvalue;
 	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
 	public ByteBuffer eventnotebuffer;
@@ -62,9 +61,6 @@ public class MainActivity extends Activity
 		detail = (TextView)findViewById(R.id.detail);
 		addevent = (Button)findViewById(R.id.addevent);
 
-	//	Init variables
-		justopen = true;
-
 	//	Get byte buffer for editing
 		sb = new StringBuffer();
 		midi = ByteBuffer.allocate(1048576);
@@ -78,7 +74,6 @@ public class MainActivity extends Activity
 		WindowManager m=(WindowManager) getSystemService(WINDOW_SERVICE);
 		expl.setWidth(m.getDefaultDisplay().getWidth()/2);
 		src.setWidth(m.getDefaultDisplay().getWidth()/2);
-		justopen = false;
 
 		open();
 	//	Edit widget
@@ -108,10 +103,6 @@ public class MainActivity extends Activity
 	//Many necessary functions
 	void update()
 	{
-		if(!justopen)
-		{
-			addevent();
-		}
 		detail.setText(remain+midi.remaining()+use+midi.position());
 		src.setText(printbyte(midi));
 	}
