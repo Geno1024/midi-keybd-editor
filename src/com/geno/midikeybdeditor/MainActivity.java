@@ -80,7 +80,7 @@ public class MainActivity extends Activity
 		src.setWidth(m.getDefaultDisplay().getWidth()/2);
 		justopen = false;
 
-		save();
+		open();
 	//	Edit widget
 		addevent.setOnClickListener
 		(new OnClickListener()
@@ -234,7 +234,7 @@ public class MainActivity extends Activity
 	{
 		final EditText t = new EditText(MainActivity.this);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-		.setTitle("Save")
+		.setTitle(R.string.save)
 		.setView(t)
 		.setPositiveButton
 		(R.string.confirm,new DialogInterface.OnClickListener()
@@ -265,13 +265,67 @@ public class MainActivity extends Activity
 					Toast.makeText(MainActivity.this,"Finish!",Toast.LENGTH_SHORT).show();
 				}
 			}
-		).setNegativeButton
+		)
+		.setNegativeButton
 		(R.string.cancel,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
 				{
 					
+				}
+			}
+		);
+		ad.show();
+	}
+
+	void open()
+	{
+		final EditText t = new EditText(MainActivity.this);
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle(R.string.open)
+		.setView(t)
+		.setPositiveButton
+		(R.string.confirm,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					File f = new File(t.getText().toString());
+					InputStream i = null;
+					try
+					{
+						i = new BufferedInputStream(new FileInputStream(f));
+					}
+					catch(FileNotFoundException e)
+					{}
+					ByteBuffer b = null;
+					b = ByteBuffer.allocate((int)f.length());
+					try
+					{
+						i.read(b.array());
+						if(i!=null)
+						{
+							i.close();
+						}
+						
+					}
+					catch (IOException e)
+					{}
+					midi.position(0);
+					midi.put(b);
+					update();
+					Toast.makeText(MainActivity.this,"Finish!",Toast.LENGTH_SHORT).show();
+				}
+			}
+		)
+		.setNegativeButton
+		(R.string.cancel,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+
 				}
 			}
 		);
