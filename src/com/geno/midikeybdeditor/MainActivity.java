@@ -65,8 +65,7 @@ public class MainActivity extends Activity
 		sb = new StringBuffer();
 		midi = ByteBuffer.allocate(1048576);
 		eventnotebuffer = ByteBuffer.allocate(3);
-		byte[] head = {0x4D,0x54,0x68,0x64,0x0,0x0,0x0,0x6};
-		midi.put(head);
+		midi.put(new byte[]{0x4D,0x54,0x68,0x64,0x0,0x0,0x0,0x6});
 
 	//	Init display
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
@@ -296,18 +295,25 @@ public class MainActivity extends Activity
 					catch(FileNotFoundException e)
 					{}
 					ByteBuffer b = null;
-					b = ByteBuffer.allocate((int)f.length());
+					b = ByteBuffer.allocate(8);
 					try
 					{
-						i.read(b.array());
+						i.read(b.array(),0,8);
 						if(i!=null)
-						{
 							i.close();
-						}
 						
 					}
 					catch (Exception e)
 					{}
+					ByteBuffer midilegalchk = null;
+					midilegalchk = ByteBuffer.allocate(8);
+					midilegalchk.put(new byte[]{0x4D,0x54,0x68,0x64,0,0,0,6});
+					if(b!=midilegalchk)
+					{
+						Toast.makeText(MainActivity.this,"Wrong",Toast.LENGTH_SHORT).show();
+						return;
+					}
+					b = ByteBuffer.allocate((int)f.length());
 					midi.position(0);
 					midi.put(b);
 					update();
