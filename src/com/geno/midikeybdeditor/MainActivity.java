@@ -186,6 +186,11 @@ public class MainActivity extends Activity
 					}
 					catch(Exception e)
 					{}
+					if(flag==1)
+					{
+						eventnotebuffer.position(0);
+						midi.put(eventnotebuffer);
+					}
 					update();
 				}
 			}
@@ -301,7 +306,7 @@ public class MainActivity extends Activity
 						}
 						
 					}
-					catch (IOException e)
+					catch (Exception e)
 					{}
 					midi.position(0);
 					midi.put(b);
