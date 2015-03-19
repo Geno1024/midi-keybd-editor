@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!--Metadata-->
 	<string name="app_name">MIDI编辑器</string>
+	
+	<!--Proper nouns-->
 	<string name="note">音符</string>
 	<string name="velocity">力度</string>
-	<string name="remain">剩余：</string>
-	<string name="nowuse">已用：</string>
 	<string name="event">事件</string>
 	<string name="track">音轨</string>
-	<string name="addmidievent">添加MIDI事件</string>
-	<string name="addmetaevent">添加元事件</string>
 	<string name="note12">高低八度</string>
 	<string name="velocityintro">0 ~ 127</string>
+	
+	<!--Event names-->
 	<string name="eventid8">8x 键盘释放事件</string>
 	<string name="eventid9">9x 键盘按下事件</string>
 	<string name="eventidA">Ax 触摸键盘之后事件</string>
@@ -18,8 +19,17 @@
 	<string name="eventidC">Cx 程序调换事件</string>
 	<string name="eventidD">Dx 通道接触事件</string>
 	<string name="eventidE">Ex 弯音事件</string>
+	
+	<!--Button names-->
 	<string name="confirm">确认</string>
 	<string name="cancel">取消</string>
 	<string name="open">打开</string>
 	<string name="save">保存</string>
+	<string name="addmidievent">添加MIDI事件</string>
+	<string name="addmetaevent">添加元事件</string>
+	
+	<!--Status names-->
+	<string name="remain">剩余：</string>
+	<string name="nowuse">已用：</string>
+	<string name="filenotfound">文件未找到！</string>
 </resources>

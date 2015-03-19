@@ -17,8 +17,7 @@ public class MainActivity extends Activity
 	public String note,remain,use,event,confirm,cancel,velocity;
 	public StringBuffer sb;
 	public ByteBuffer midi;
-	public static int notelength;
-	
+
 	//	These values are for functions
 	public byte eventvalue,notevalue,notelengthvalue;
 	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
@@ -124,13 +123,29 @@ public class MainActivity extends Activity
 				public void onClick(DialogInterface p1, int p2)
 				{
 					eventnotebuffer.put((byte)(eventdefinedvalue[eventid]+p2));
-					noteid();
+					switch(p2)
+					{
+						case 0x8-0x8:
+							noteid();
+							break;
+						case 0x9-0x8:
+							noteid();
+							break;
+						case 0xA-0x8:
+							noteid();
+							break;
+						case 0xB-0x8:
+							break;
+						
+					}
 				}
 			}
 		);
 		ad.show();
 	}
 
+	//Event start
+	//8x, 9x, Ax needed
 	void noteid()
 	{
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
@@ -197,6 +212,9 @@ public class MainActivity extends Activity
 		ad.show();
 	}
 
+	//Event end
+
+	//Calc function
 	byte ubtosb(int unsigned)
 	{
 		//	Unsigned byte to signed byte
@@ -225,6 +243,7 @@ public class MainActivity extends Activity
 		return res;
 	}
 
+	//File function
 	void save()
 	{
 		final EditText t = new EditText(MainActivity.this);
@@ -294,23 +313,22 @@ public class MainActivity extends Activity
 					}
 					catch(FileNotFoundException e)
 					{}
-					ByteBuffer b = null;
+					ByteBuffer b;
 					b = ByteBuffer.allocate(8);
 					try
 					{
 						i.read(b.array(),0,8);
 						if(i!=null)
 							i.close();
-						
 					}
 					catch (Exception e)
 					{}
-					ByteBuffer midilegalchk = null;
+					ByteBuffer midilegalchk;
 					midilegalchk = ByteBuffer.allocate(8);
 					midilegalchk.put(new byte[]{0x4D,0x54,0x68,0x64,0,0,0,6});
 					if(b!=midilegalchk)
 					{
-						Toast.makeText(MainActivity.this,"Wrong",Toast.LENGTH_SHORT).show();
+						Toast.makeText(MainActivity.this,R.string.filenotfound,Toast.LENGTH_SHORT).show();
 						return;
 					}
 					b = ByteBuffer.allocate((int)f.length());
