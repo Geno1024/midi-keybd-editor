@@ -151,31 +151,31 @@ public class MainActivity extends Activity
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.note)
 		.setItems
-			(notedefinedname,new DialogInterface.OnClickListener()
+		(notedefinedname,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
 				{
-					@Override
-					public void onClick(DialogInterface p1, int p2)
-					{
-						notevalue = (byte) (0x3c + p2);
-						AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-						.setTitle(R.string.note12)
-						.setItems
-							(note12,new DialogInterface.OnClickListener()
+					notevalue = (byte) (0x3c + p2);
+					AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+					.setTitle(R.string.note12)
+					.setItems
+						(note12,new DialogInterface.OnClickListener()
+							{
+								@Override
+								public void onClick(DialogInterface p1,int p2)
 								{
-									@Override
-									public void onClick(DialogInterface p1,int p2)
-									{
-										notevalue = ubtosb(notevalue + ( p2 - 5 ) * 12);
-										eventnotebuffer.put(notevalue);
-										if(flag==1)
-											velocity();
-									}
+									notevalue = ubtosb(notevalue + ( p2 - 5 ) * 12);
+									eventnotebuffer.put(notevalue);
+									if(flag==1)
+										velocity();
 								}
-							);
-						ad.show();
-					}
+							}
+						);
+					ad.show();
 				}
-			);
+			}
+		);
 		ad.show();
 	}
 
@@ -206,6 +206,42 @@ public class MainActivity extends Activity
 						midi.put(eventnotebuffer);
 					}
 					update();
+				}
+			}
+		);
+		ad.show();
+	}
+
+	//Bx needed
+	void ctrlchg()
+	{
+		final EditText t = new EditText(MainActivity.this);
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle("Control change")
+		.setView(t)
+		.setPositiveButton
+		(R.string.confirm,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					//TODO
+					try
+					{
+						eventnotebuffer.put((byte)Integer.parseInt(t.getText().toString()));
+					}
+					catch(Exception e)
+					{}
+				}
+			}
+		)
+		.setNegativeButton
+		(R.string.cancel,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+
 				}
 			}
 		);
