@@ -73,7 +73,7 @@ public class MainActivity extends Activity
 		expl.setWidth(m.getDefaultDisplay().getWidth()/2);
 		src.setWidth(m.getDefaultDisplay().getWidth()/2);
 
-		open();
+		ctrlchg();
 	//	Edit widget
 		addevent.setOnClickListener
 		(new OnClickListener()
@@ -215,9 +215,10 @@ public class MainActivity extends Activity
 	//Bx needed
 	void ctrlchg()
 	{
+		String a = getString(R.string.eventidB);
 		final EditText t = new EditText(MainActivity.this);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-		.setTitle("Control change")
+		.setTitle(String.copyValueOf(a.toCharArray(),3,a.length()-3))
 		.setView(t)
 		.setPositiveButton
 		(R.string.confirm,new DialogInterface.OnClickListener()
