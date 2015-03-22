@@ -227,12 +227,6 @@ public class MainActivity extends Activity
 				public void onClick(DialogInterface p1, int p2)
 				{
 					//TODO
-					try
-					{
-						eventnotebuffer.put((byte)Integer.parseInt(t.getText().toString()));
-					}
-					catch(Exception e)
-					{}
 				}
 			}
 		)
