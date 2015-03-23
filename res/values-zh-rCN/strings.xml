@@ -29,7 +29,11 @@
 	<string name="addmetaevent">添加元事件</string>
 	
 	<!--Status names-->
+	<string name="finish">完成！</string>
 	<string name="remain">剩余：</string>
 	<string name="nowuse">已用：</string>
 	<string name="filenotfound">文件未找到！</string>
+	<string name="notamidi">这个文件不是一个合格的MIDI！</string>
+	<string name="illegalnumfmt">数字格式错误！</string>
 </resources>
+

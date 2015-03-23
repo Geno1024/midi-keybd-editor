@@ -29,7 +29,11 @@
 	<string name="addmetaevent">Add Meta event</string>
 	
 	<!--Status names-->
+	<string name="finish">Finish!</string>
 	<string name="remain">Remaining:</string>
 	<string name="nowuse">Now use:</string>
 	<string name="filenotfound">File NOT Found!</string>
+	<string name="notamidi">This file is NOT a MIDI!</string>
+	<string name="illegalnumfmt">Number format ILLEGAL!</string>
 </resources>
+

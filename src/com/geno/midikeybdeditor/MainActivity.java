@@ -9,6 +9,7 @@ import android.widget.*;
 import java.nio.*;
 import android.text.*;
 import java.io.*;
+import android.content.pm.*;
 
 public class MainActivity extends Activity
 {
@@ -73,7 +74,19 @@ public class MainActivity extends Activity
 		expl.setWidth(m.getDefaultDisplay().getWidth()/2);
 		src.setWidth(m.getDefaultDisplay().getWidth()/2);
 
+	//	Here I made a boring count for apk size
+		try
+		{
+			ApplicationInfo appInfo = this.getPackageManager().getApplicationInfo("com.geno.midikeybdeditor", 0);
+			File f = new File(appInfo.sourceDir);
+			Toast.makeText(MainActivity.this,f.length()+"",Toast.LENGTH_SHORT).show();
+		}
+		catch (PackageManager.NameNotFoundException e)
+		{}
+
+	//	The func below are being tested
 		ctrlchg();
+
 	//	Edit widget
 		addevent.setOnClickListener
 		(new OnClickListener()
@@ -226,7 +239,17 @@ public class MainActivity extends Activity
 				@Override
 				public void onClick(DialogInterface p1, int p2)
 				{
-					//TODO
+					try
+					{
+						int i = Integer.parseInt(t.getText().toString());
+						eventnotebuffer.put(ubtosb(i));
+					}
+					catch(Exception e)
+					{
+						Toast.makeText(MainActivity.this,R.string.illegalnumfmt,Toast.LENGTH_SHORT).show();
+						ctrlchg();
+						return;
+					}
 				}
 			}
 		)
@@ -236,7 +259,7 @@ public class MainActivity extends Activity
 				@Override
 				public void onClick(DialogInterface p1, int p2)
 				{
-
+					
 				}
 			}
 		);
@@ -343,7 +366,9 @@ public class MainActivity extends Activity
 						i = new BufferedInputStream(new FileInputStream(f));
 					}
 					catch(FileNotFoundException e)
-					{}
+					{
+						Toast.makeText(MainActivity.this,R.string.filenotfound,Toast.LENGTH_SHORT).show();
+					}
 					ByteBuffer b;
 					b = ByteBuffer.allocate(8);
 					try
@@ -359,14 +384,14 @@ public class MainActivity extends Activity
 					midilegalchk.put(new byte[]{0x4D,0x54,0x68,0x64,0,0,0,6});
 					if(b!=midilegalchk)
 					{
-						Toast.makeText(MainActivity.this,R.string.filenotfound,Toast.LENGTH_SHORT).show();
+						Toast.makeText(MainActivity.this,R.string.notamidi,Toast.LENGTH_SHORT).show();
 						return;
 					}
 					b = ByteBuffer.allocate((int)f.length());
 					midi.position(0);
 					midi.put(b);
 					update();
-					Toast.makeText(MainActivity.this,"Finish!",Toast.LENGTH_SHORT).show();
+					Toast.makeText(MainActivity.this,R.string.finish,Toast.LENGTH_SHORT).show();
 				}
 			}
 		)
