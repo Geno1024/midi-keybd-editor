@@ -148,6 +148,7 @@ public class MainActivity extends Activity
 							noteid();
 							break;
 						case 0xB-0x8:
+							ctrlchg();
 							break;
 						
 					}
