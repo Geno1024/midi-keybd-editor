@@ -150,7 +150,7 @@ public class MainActivity extends Activity
 				public void onClick(DialogInterface p1, int p2)
 				{
 					eventnotebuffer.put((byte)(eventdefinedvalue[eventid]+p2));
-					switch(p2)
+					switch(eventid)
 					{
 						case 0x8-0x8:
 							noteid();
