@@ -26,6 +26,7 @@ public class MainActivity extends Activity
 	public String[] notedefinedname = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
 	public String[] trackno = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
 	public String[] note12 = {"8x -5","8x -4","8x -3","8x -2","8x -1","8x ±0","8x +1","8x +2","8x +3","8x +4","8x +5"};
+	public String[] insfaminame;
 
 	/*	This integer is an important flag in this program
 	*	for checking if this nesting functions below
@@ -53,7 +54,21 @@ public class MainActivity extends Activity
 		confirm = getString(R.string.confirm);
 		cancel = getString(R.string.cancel);
 		velocity = getString(R.string.velocity);
-		selectevent = new String[]{getString(R.string.eventid8),getString(R.string.eventid9),getString(R.string.eventidA),getString(R.string.eventidB),getString(R.string.eventidC),getString(R.string.eventidD),getString(R.string.eventidE)};
+		selectevent = new String[7];
+		insfaminame = new String[16];
+		/*	Note that in R.java
+		*	the string is sorted by name
+		*	so we can getstring in this
+		*	AMAZING way!
+		*/
+		for(int i = 0;i < 7;i++)
+		{
+			selectevent[i]=getString(R.string.eventid8+i);
+		}
+		for(int i = 0;i < 16;i++)
+		{
+			insfaminame[i]=getString(R.string.fami1+i);
+		}
 
 	//	Get layout id
 		expl = (TextView)findViewById(R.id.explanation);
@@ -84,7 +99,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		ctrlchg();
+		prgmchg();
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -322,7 +337,19 @@ public class MainActivity extends Activity
 	//	Cx needed
 	void prgmchg()
 	{
-		
+		String a = getString(R.string.eventidC);
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle(String.copyValueOf(a.toCharArray(),3,a.length()-3))
+		.setItems
+		(insfaminame,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{	
+				}
+			}
+		);
+		ad.show();
 	}
 
 	//	Event end

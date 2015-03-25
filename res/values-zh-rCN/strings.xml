@@ -14,11 +14,11 @@
 	<!--Event names-->
 	<string name="eventid8">8x 键盘释放事件</string>
 	<string name="eventid9">9x 键盘按下事件</string>
-	<string name="eventidA">Ax 触摸键盘之后事件</string>
+	<string name="eventidA">Ax 轮指事件</string>
 	<string name="eventidB">Bx 调换控制事件</string>
 	<string name="eventidC">Cx 程序调换事件</string>
 	<string name="eventidD">Dx 通道接触事件</string>
-	<string name="eventidE">Ex 弯音事件</string>
+	<string name="eventidE">Ex 音高事件</string>
 	
 	<!--Button names-->
 	<string name="confirm">确认</string>
@@ -39,5 +39,23 @@
 	<!--Status names-->
 	<string name="newval">新值</string>
 	<string name="eventidB_sta1">控制号</string>
+
+	<!--Instrument family names-->
+	<string name="fami1">0(0-7) 钢琴</string>
+	<string name="fami2">0(8-F) 打击乐器</string>
+	<string name="fami3">1(0-7) 风琴</string>
+	<string name="fami4">1(8-F) 吉他</string>
+	<string name="fami5">2(0-7) 贝司</string>
+	<string name="fami6">2(8-F) 弦乐</string>
+	<string name="fami7">3(0-7) 合唱合奏</string>
+	<string name="fami8">3(8-F) 铜管乐器</string>
+	<string name="fami9">4(0-7) 哨片乐器</string>
+	<string name="fami10">4(8-F) 吹管乐器</string>
+	<string name="fami11">5(0-7) 合成主音</string>
+	<string name="fami12">5(8-F) 合成柔音</string>
+	<string name="fami13">6(0-7) 合成特效</string>
+	<string name="fami14">6(8-F) 民族乐器</string>
+	<string name="fami15">7(0-7) 打击乐器</string>
+	<string name="fami16">7(8-F) 声音特效</string>
 </resources>
 

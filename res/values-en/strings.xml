@@ -39,5 +39,23 @@
 	<!--Intro strings-->
 	<string name="newval">New Value</string>
 	<string name="eventidB_sta1">Controller Number</string>
+	
+	<!--Instrument family names-->
+	<string name="fami1">0(0-7) Piano</string>
+	<string name="fami2">0(8-F) Chromatic Percussion</string>
+	<string name="fami3">1(0-7) Organ</string>
+	<string name="fami4">1(8-F) Guitar</string>
+	<string name="fami5">2(0-7) Bass</string>
+	<string name="fami6">2(8-F) Strings</string>
+	<string name="fami7">3(0-7) Ensemble</string>
+	<string name="fami8">3(8-F) Brass</string>
+	<string name="fami9">4(0-7) Reed</string>
+	<string name="fami10">4(8-F) Pipe</string>
+	<string name="fami11">5(0-7) Synth Lead</string>
+	<string name="fami12">5(8-F) Synth Pad</string>
+	<string name="fami13">6(0-7) Synth Effects</string>
+	<string name="fami14">6(8-F) Ethnic</string>
+	<string name="fami15">7(0-7) Percusive</string>
+	<string name="fami16">7(8-F) Sound Effects</string>
 </resources>
 
