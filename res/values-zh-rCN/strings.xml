@@ -35,5 +35,9 @@
 	<string name="filenotfound">文件未找到！</string>
 	<string name="notamidi">这个文件不是一个合格的MIDI！</string>
 	<string name="illegalnumfmt">数字格式错误！</string>
+
+	<!--Status names-->
+	<string name="newval">新值</string>
+	<string name="eventidB_sta1">控制号</string>
 </resources>
 

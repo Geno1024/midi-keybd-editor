@@ -2,7 +2,7 @@
 <resources>
 	<!--Metadata-->
 	<string name="app_name">MIDI Editor</string>
-	
+
 	<!--Proper nouns-->
 	<string name="note">Note</string>
 	<string name="velocity">Velocity</string>
@@ -10,7 +10,7 @@
 	<string name="track">Track</string>
 	<string name="note12">High/Low 12</string>
 	<string name="velocityintro">0 ~ 127</string>
-	
+
 	<!--Event names-->
 	<string name="eventid8">8x Note Off Event</string>
 	<string name="eventid9">9x Note On Event</string>
@@ -19,7 +19,7 @@
 	<string name="eventidC">Cx Program Change</string>
 	<string name="eventidD">Dx Channel Pressure</string>
 	<string name="eventidE">Ex Pitch Bend Change</string>
-	
+
 	<!--Button names-->
 	<string name="confirm">Confirm</string>
 	<string name="cancel">Cancel</string>
@@ -27,7 +27,7 @@
 	<string name="save">Save</string>
 	<string name="addmidievent">Add MIDI Event</string>
 	<string name="addmetaevent">Add Meta event</string>
-	
+
 	<!--Status names-->
 	<string name="finish">Finish!</string>
 	<string name="remain">Remaining:</string>
@@ -35,5 +35,9 @@
 	<string name="filenotfound">File NOT Found!</string>
 	<string name="notamidi">This file is NOT a MIDI!</string>
 	<string name="illegalnumfmt">Number format ILLEGAL!</string>
+
+	<!--Intro strings-->
+	<string name="newval">New Value</string>
+	<string name="eventidB_sta1">Controller Number</string>
 </resources>
 

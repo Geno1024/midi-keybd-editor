@@ -70,21 +70,20 @@ public class MainActivity extends Activity
 	//	Init display
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
 		update();
-		WindowManager m=(WindowManager) getSystemService(WINDOW_SERVICE);
+		WindowManager m = (WindowManager)getSystemService(WINDOW_SERVICE);
 		expl.setWidth(m.getDefaultDisplay().getWidth()/2);
 		src.setWidth(m.getDefaultDisplay().getWidth()/2);
 
 	//	Here I made a boring count for apk size
 		try
 		{
-			ApplicationInfo appInfo = this.getPackageManager().getApplicationInfo("com.geno.midikeybdeditor", 0);
-			File f = new File(appInfo.sourceDir);
-			Toast.makeText(MainActivity.this,f.length()+"",Toast.LENGTH_SHORT).show();
+			Toast.makeText(MainActivity.this,new File(this.getPackageManager().getApplicationInfo("com.geno.midikeybdeditor",0).sourceDir).length()+"",Toast.LENGTH_SHORT).show();
 		}
-		catch (PackageManager.NameNotFoundException e)
+		catch (Exception e)
 		{}
 
 	//	The func below are being tested
+		flag=1;
 		ctrlchg();
 
 	//	Edit widget
@@ -158,8 +157,13 @@ public class MainActivity extends Activity
 		ad.show();
 	}
 
-	//Event start
-	//8x, 9x, Ax needed
+	/*	Then eventnotebuffer has ONE byte
+	*	saying the event id (8 - E) in high 8 bits
+	*	and the track number (0 - E) in low 8 bits
+	*/
+	
+	//	Event start
+	//	8x, 9x, Ax needed
 	void noteid()
 	{
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
@@ -231,6 +235,7 @@ public class MainActivity extends Activity
 	{
 		String a = getString(R.string.eventidB);
 		final EditText t = new EditText(MainActivity.this);
+		t.setHint(R.string.eventidB_sta1);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(String.copyValueOf(a.toCharArray(),3,a.length()-3))
 		.setView(t)
@@ -242,8 +247,7 @@ public class MainActivity extends Activity
 				{
 					try
 					{
-						int i = Integer.parseInt(t.getText().toString());
-						eventnotebuffer.put(ubtosb(i));
+						eventnotebuffer.put(ubtosb(Integer.parseInt(t.getText().toString())));
 					}
 					catch(Exception e)
 					{
@@ -251,6 +255,8 @@ public class MainActivity extends Activity
 						ctrlchg();
 						return;
 					}
+					if(flag == 1)
+						ctrlid();
 				}
 			}
 		)
@@ -261,6 +267,50 @@ public class MainActivity extends Activity
 				public void onClick(DialogInterface p1, int p2)
 				{
 					
+				}
+			}
+		);
+		ad.show();
+	}
+
+	void ctrlid()
+	{
+		final EditText e = new EditText(MainActivity.this);
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle(R.string.eventidB_sta1)
+		.setView(e)
+		.setPositiveButton
+		(R.string.confirm,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					try
+					{
+						eventnotebuffer.put(ubtosb(Integer.parseInt(e.getText().toString())));
+					}
+					catch(Exception e)
+					{
+						Toast.makeText(MainActivity.this,R.string.illegalnumfmt,Toast.LENGTH_SHORT).show();
+						ctrlid();
+						return;
+					}
+					if(flag == 1)
+					{
+						eventnotebuffer.position(0);
+						midi.put(eventnotebuffer);
+					}
+					update();
+				}
+			}
+		)
+		.setNegativeButton
+		(R.string.cancel,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+
 				}
 			}
 		);
@@ -311,11 +361,10 @@ public class MainActivity extends Activity
 				@Override
 				public void onClick(DialogInterface p1, int p2)
 				{
-					File f = new File(t.getText().toString());
 					OutputStream o = null;
 					try
 					{
-						o = new BufferedOutputStream(new FileOutputStream(f));
+						o = new BufferedOutputStream(new FileOutputStream(new File(t.getText().toString())));
 					}
 					catch (FileNotFoundException e)
 					{}
@@ -331,7 +380,7 @@ public class MainActivity extends Activity
 					}
 					catch (IOException e)
 					{}
-					Toast.makeText(MainActivity.this,"Finish!",Toast.LENGTH_SHORT).show();
+					Toast.makeText(MainActivity.this,R.string.finish,Toast.LENGTH_SHORT).show();
 				}
 			}
 		)
