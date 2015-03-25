@@ -149,7 +149,9 @@ public class MainActivity extends Activity
 						case 0xB-0x8:
 							ctrlchg();
 							break;
-						
+						case 0xC-0x8:
+							prgmchg();
+							break;
 					}
 				}
 			}
@@ -317,7 +319,13 @@ public class MainActivity extends Activity
 		ad.show();
 	}
 
-	//Event end
+	//	Cx needed
+	void prgmchg()
+	{
+		
+	}
+
+	//	Event end
 
 	//Calc function
 	byte ubtosb(int unsigned)
