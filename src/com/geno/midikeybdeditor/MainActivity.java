@@ -13,7 +13,7 @@ import android.content.pm.*;
 
 public class MainActivity extends Activity
 {
-	public TextView expl,src,detail,addevent;
+	public TextView expl,src,detail,addevent,addmetaevent;
 	public String[] expla,selectevent;
 	public String note,remain,use,event,confirm,cancel,velocity;
 	public StringBuffer sb;
@@ -75,6 +75,7 @@ public class MainActivity extends Activity
 		src = (TextView)findViewById(R.id.srccode);
 		detail = (TextView)findViewById(R.id.detail);
 		addevent = (Button)findViewById(R.id.addevent);
+		addmetaevent = (Button)findViewById(R.id.addmetaevent);
 
 	//	Get byte buffer for editing
 		sb = new StringBuffer();
