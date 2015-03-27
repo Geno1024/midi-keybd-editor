@@ -346,7 +346,11 @@ public class MainActivity extends Activity
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
-				{	
+				{
+					switch(p2)
+					{
+						
+					}
 				}
 			}
 		);
