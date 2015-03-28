@@ -72,12 +72,8 @@ public class MainActivity extends Activity
 			insfaminame[i]=getString(R.string.fami1+i);
 		}
 		for(int i = 0;i < 16;i++)
-		{
 			for(int j = 0;j < 8;j++)
-			{
 				insname[i][j]=getString(R.string.inst00+i*8+j);
-			}
-		}
 
 	//	Get layout id
 		expl = (TextView)findViewById(R.id.explanation);
