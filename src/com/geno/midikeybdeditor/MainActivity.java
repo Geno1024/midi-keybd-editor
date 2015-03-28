@@ -27,6 +27,7 @@ public class MainActivity extends Activity
 	public String[] trackno = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
 	public String[] note12 = {"8x -5","8x -4","8x -3","8x -2","8x -1","8x ±0","8x +1","8x +2","8x +3","8x +4","8x +5"};
 	public String[] insfaminame;
+	public String[][] insname;
 
 	/*	This integer is an important flag in this program
 	*	for checking if this nesting functions below
@@ -56,6 +57,7 @@ public class MainActivity extends Activity
 		velocity = getString(R.string.velocity);
 		selectevent = new String[7];
 		insfaminame = new String[16];
+		insname = new String[16][8];
 		/*	Note that in R.java
 		*	the string is sorted by name
 		*	so we can getstring in this
@@ -68,6 +70,13 @@ public class MainActivity extends Activity
 		for(int i = 0;i < 16;i++)
 		{
 			insfaminame[i]=getString(R.string.fami1+i);
+		}
+		for(int i = 0;i < 16;i++)
+		{
+			for(int j = 0;j < 8;j++)
+			{
+				insname[i][j]=getString(R.string.inst00+i*8+j);
+			}
 		}
 
 	//	Get layout id
