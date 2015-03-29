@@ -352,10 +352,28 @@ public class MainActivity extends Activity
 				@Override
 				public void onClick(DialogInterface p1, int p2)
 				{
-					switch(p2)
-					{
-						
-					}
+					String a = insfaminame[p2];
+					final int s = p2;
+					AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+					.setTitle(String.copyValueOf(a.toCharArray(),7,a.length()-7))
+					.setItems
+					(insname[p2],new DialogInterface.OnClickListener()
+						{
+							@Override
+							public void onClick(DialogInterface p1, int p2)
+							{
+								eventnotebuffer.put((byte)(s*8+p2));
+								if(flag == 1)
+								{
+									eventnotebuffer.position(0);
+									midi.put(eventnotebuffer);
+									midi.position(midi.position()-1);
+								}
+								update();
+							}
+						}
+					);
+					ad.show();
 				}
 			}
 		);
