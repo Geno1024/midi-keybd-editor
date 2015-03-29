@@ -64,13 +64,9 @@ public class MainActivity extends Activity
 		*	AMAZING way!
 		*/
 		for(int i = 0;i < 7;i++)
-		{
 			selectevent[i]=getString(R.string.eventid8+i);
-		}
 		for(int i = 0;i < 16;i++)
-		{
 			insfaminame[i]=getString(R.string.fami1+i);
-		}
 		for(int i = 0;i < 16;i++)
 			for(int j = 0;j < 8;j++)
 				insname[i][j]=getString(R.string.inst00+i*8+j);
@@ -105,7 +101,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		prgmchg();
+		open();
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -134,7 +130,7 @@ public class MainActivity extends Activity
 	//Many necessary functions
 	void update()
 	{
-		detail.setText(remain+midi.remaining()+use+midi.position());
+		detail.setText(remain+midi.remaining()+" "+use+midi.position());
 		src.setText(printbyte(midi));
 	}
 
@@ -482,25 +478,27 @@ public class MainActivity extends Activity
 					{
 						Toast.makeText(MainActivity.this,R.string.filenotfound,Toast.LENGTH_SHORT).show();
 					}
-					ByteBuffer b;
-					b = ByteBuffer.allocate(8);
+					byte[] midichk = null;
 					try
 					{
-						i.read(b.array(),0,8);
-						if(i!=null)
-							i.close();
+						i.read(midichk,0,8);
+						i.close();
 					}
 					catch (Exception e)
 					{}
-					ByteBuffer midilegalchk;
-					midilegalchk = ByteBuffer.allocate(8);
-					midilegalchk.put(new byte[]{0x4D,0x54,0x68,0x64,0,0,0,6});
-					if(b!=midilegalchk)
+					if(midichk!=new byte[]{0x4D,0x54,0x68,0x64,0,0,0,6})
 					{
 						Toast.makeText(MainActivity.this,R.string.notamidi,Toast.LENGTH_SHORT).show();
-						return;
 					}
+					ByteBuffer b=null;
 					b = ByteBuffer.allocate((int)f.length());
+					try
+					{
+						i.read(b.array());
+						i.close();
+					}
+					catch (Exception e)
+					{}
 					midi.position(0);
 					midi.put(b);
 					update();
