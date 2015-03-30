@@ -101,7 +101,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		open();
+		prgmchg();
 
 	//	Edit widget
 		addevent.setOnClickListener
