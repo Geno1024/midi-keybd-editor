@@ -125,7 +125,20 @@ public class MainActivity extends Activity
 				}
 			}
 		);
-    }
+
+		addmetaevent.setOnClickListener
+		(new OnClickListener()
+			{
+				@Override
+				public void onClick(View p1)
+				{
+					AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+						;
+					ad.show();
+				}
+			}
+		);
+	}
 
 	//Many necessary functions
 	void update()
