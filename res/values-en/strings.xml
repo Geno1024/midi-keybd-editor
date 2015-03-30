@@ -57,5 +57,150 @@
 	<string name="fami14">6(8-F) Ethnic</string>
 	<string name="fami15">7(0-7) Percusive</string>
 	<string name="fami16">7(8-F) Sound Effects</string>
+
+	<!--Instrument names-->
+	<string name="inst00">00 Acoustic Grand Piano</string>
+	<string name="inst01">01 Bright Acoustic Piano</string>
+	<string name="inst02">02 Electric Grand Piano</string>
+	<string name="inst03">03 Honky-Tonk Piano</string>
+	<string name="inst04">04 Rhodes Piano</string>
+	<string name="inst05">05 Chorused Piano</string>
+	<string name="inst06">06 Harpsichord</string>
+	<string name="inst07">07 Clavinet</string>
+	
+	<string name="inst08">08 Celesta</string>
+	<string name="inst09">09 Glockenspiel</string>
+	<string name="inst0A">0A Music Box</string>
+	<string name="inst0B">0B Vibraphone</string>
+	<string name="inst0C">0C Marimba</string>
+	<string name="inst0D">0D Xylophone</string>
+	<string name="inst0E">0E Tubular Bells</string>
+	<string name="inst0F">0F Dulcimer</string>
+
+	<string name="inst10">10 Hammond Organ</string>
+	<string name="inst11">11 Percussive Organ</string>
+	<string name="inst12">12 Rock Organ</string>
+	<string name="inst13">13 Church Organ</string>
+	<string name="inst14">14 Reed Organ</string>
+	<string name="inst15">15 Accordion</string>
+	<string name="inst16">16 Harmonica</string>
+	<string name="inst17">17 Tango Accordion</string>
+
+	<string name="inst18">18 Acoustic Guitar (Nylon)</string>
+	<string name="inst19">19 Acoustic Guitar (Steel)</string>
+	<string name="inst1A">1A Electric Guitar (Jazz)</string>
+	<string name="inst1B">1B Electric Guitar (Clean)</string>
+	<string name="inst1C">1C Electric Guitar (Muted)</string>
+	<string name="inst1D">1D Overdriven Guitar</string>
+	<string name="inst1E">1E Distortion Guitar</string>
+	<string name="inst1F">1F Guitar Harmonics</string>
+
+	<string name="inst20">20 Acoustic Bass</string>
+	<string name="inst21">21 Electric Bass (Finger)</string>
+	<string name="inst22">22 Electric Bass (Pick)</string>
+	<string name="inst23">23 Fretless Bass</string>
+	<string name="inst24">24 Slap Bass 1</string>
+	<string name="inst25">25 Slap Bass 2</string>
+	<string name="inst26">26 Synth Bass 1</string>
+	<string name="inst27">27 Synth Bass 2</string>
+
+	<string name="inst28">28 Violin</string>
+	<string name="inst29">29 Viola</string>
+	<string name="inst2A">2A Cello</string>
+	<string name="inst2B">2B Contrabass</string>
+	<string name="inst2C">2C Tremolo Strings</string>
+	<string name="inst2D">2D Pizzicato Strings</string>
+	<string name="inst2E">2E Orchestral Harp</string>
+	<string name="inst2F">2F Timpani</string>
+
+	<string name="inst30">30 String Ensemble 1</string>
+	<string name="inst31">31 String Ensemble 2</string>
+	<string name="inst32">32 Synth Strings 1</string>
+	<string name="inst33">33 Synth Strings 2</string>
+	<string name="inst34">34 Choir Aahs</string>
+	<string name="inst35">35 Voice Oohs</string>
+	<string name="inst36">36 Synth Voice</string>
+	<string name="inst37">37 Orchestra Hit</string>
+
+	<string name="inst38">38 Trumpet</string>
+	<string name="inst39">39 Trombone</string>
+	<string name="inst3A">3A Tuba</string>
+	<string name="inst3B">3B Muted Trumpet</string>
+	<string name="inst3C">3C French Horn</string>
+	<string name="inst3D">3D Brass Section</string>
+	<string name="inst3E">3E Synth Brass 1</string>
+	<string name="inst3F">3F Synth Brass 2</string>
+
+	<string name="inst40">40 Soprano Sax</string>
+	<string name="inst41">41 Alto Sax</string>
+	<string name="inst42">42 Tenor Sax</string>
+	<string name="inst43">43 Baritone Sax</string>
+	<string name="inst44">44 Oboe</string>
+	<string name="inst45">45 English Horn</string>
+	<string name="inst46">46 Bassoon</string>
+	<string name="inst47">47 Clarinet</string>
+
+	<string name="inst48">48 Piccolo</string>
+	<string name="inst49">49 Flute</string>
+	<string name="inst4A">4A Recorder</string>
+	<string name="inst4B">4B Pan Flute</string>
+	<string name="inst4C">4C Bottle Blow</string>
+	<string name="inst4D">4D Skakuhachi</string>
+	<string name="inst4E">4E Whistle</string>
+	<string name="inst4F">4F Ocarina</string>
+
+	<string name="inst50">50 Lead 1 (Square)</string>
+	<string name="inst51">51 Lead 2 (Sawtooth)</string>
+	<string name="inst52">52 Lead 3 (Calliope Lead)</string>
+	<string name="inst53">53 Lead 4 (Chiff Lead)</string>
+	<string name="inst54">54 Lead 5 (Charang)</string>
+	<string name="inst55">55 Lead 6 (Voice)</string>
+	<string name="inst56">56 Lead 7 (Fifths)</string>
+	<string name="inst57">57 Lead 8 (Bass + Lead)</string>
+
+	<string name="inst58">58 Pad 1 (New Age)</string>
+	<string name="inst59">59 Pad 2 (Warm)</string>
+	<string name="inst5A">5A Pad 3 (Polysynth)</string>
+	<string name="inst5B">5B Pad 4 (Choir)</string>
+	<string name="inst5C">5C Pad 5 (Bowed)</string>
+	<string name="inst5D">5D Pad 6 (Metallic)</string>
+	<string name="inst5E">5E Pad 7 (Halo)</string>
+	<string name="inst5F">5F Pad 8 (Sweep)</string>
+
+	<string name="inst60">60 FX 1 (Rain)</string>
+	<string name="inst61">61 FX 2 (Soundtrack)</string>
+	<string name="inst62">62 FX 3 (Crystal)</string>
+	<string name="inst63">63 FX 4 (Atmosphere)</string>
+	<string name="inst64">64 FX 5 (Brightness)</string>
+	<string name="inst65">65 FX 6 (Goblins)</string>
+	<string name="inst66">66 FX 7 (Echoes)</string>
+	<string name="inst67">67 FX 8 (Sci-Fi)</string>
+
+	<string name="inst68">68 Sitar</string>
+	<string name="inst69">69 Banjo</string>
+	<string name="inst6A">6A Shamisen</string>
+	<string name="inst6B">6B Koto</string>
+	<string name="inst6C">6C Kalimba</string>
+	<string name="inst6D">6D Bagpipe</string>
+	<string name="inst6E">6E Fiddle</string>
+	<string name="inst6F">6F Shanai</string>
+
+	<string name="inst70">70 Tinkle Bell</string>
+	<string name="inst71">71 Agogo</string>
+	<string name="inst72">72 Steel Drums</string>
+	<string name="inst73">73 Woodblock</string>
+	<string name="inst74">74 Taiko Drum</string>
+	<string name="inst75">75 Melodic Tom</string>
+	<string name="inst76">76 Synth Drum</string>
+	<string name="inst77">77 Reverse Cymbal</string>
+
+	<string name="inst78">78 Guitar Fret Noise</string>
+	<string name="inst79">79 Breath Noise</string>
+	<string name="inst7A">7A Seashore</string>
+	<string name="inst7B">7B Bird Tweet</string>
+	<string name="inst7C">7C Telephone Ring</string>
+	<string name="inst7D">7D Helicopter</string>
+	<string name="inst7E">7E Applause</string>
+	<string name="inst7F">7F Gunshot</string>
 </resources>
 
