@@ -133,7 +133,7 @@ public class MainActivity extends Activity
 				public void onClick(View p1)
 				{
 					AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-						;
+					;
 					ad.show();
 				}
 			}
@@ -151,6 +151,13 @@ public class MainActivity extends Activity
 	{
 		eventnotebuffer.position(0);
 		midi.put(eventnotebuffer);
+	}
+
+	void trackcnt()
+	{
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle("Track Count?");
+		ad.show();
 	}
 
 	void eventchk(final int eventid)
