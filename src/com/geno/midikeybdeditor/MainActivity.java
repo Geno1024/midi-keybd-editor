@@ -101,7 +101,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		prgmchg();
+		trackcnt();
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -156,8 +156,22 @@ public class MainActivity extends Activity
 	void trackcnt()
 	{
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-		.setTitle("Track Count?");
+		.setTitle("Track Count?")
+		.setItems(new String[]{getString(R.string.monotrack),getString(R.string.syncmultitrack),getString(R.string.asyncmultitrack)},new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					ByteBuffer b;
+					b = ByteBuffer.allocate(2);
+					b.position(1);
+					b.put((byte)p2);
+					midi.put(b);
+				}
+			}
+		);
 		ad.show();
+		update();
 	}
 
 	void eventchk(final int eventid)
