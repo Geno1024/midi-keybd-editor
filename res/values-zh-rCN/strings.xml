@@ -17,6 +17,7 @@
 	<string name="velocityintro">0 ~ 127</string>
 	
 	<!--Event names-->
+	<string name="trackcnt">轨道流量？</string>
 	<string name="eventid8">8x 键盘释放事件</string>
 	<string name="eventid9">9x 键盘按下事件</string>
 	<string name="eventidA">Ax 轮指事件</string>

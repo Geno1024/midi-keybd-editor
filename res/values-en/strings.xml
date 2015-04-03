@@ -17,6 +17,7 @@
 	<string name="velocityintro">0 ~ 127</string>
 
 	<!--Event names-->
+	<string name="trackcnt">Track Count?</string>
 	<string name="eventid8">8x Note Off Event</string>
 	<string name="eventid9">9x Note On Event</string>
 	<string name="eventidA">Ax Polyphonic Key Pressure</string>

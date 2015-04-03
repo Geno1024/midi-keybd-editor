@@ -156,7 +156,7 @@ public class MainActivity extends Activity
 	void trackcnt()
 	{
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-		.setTitle("Track Count?")
+		.setTitle(R.string.trackcnt)
 		.setItems(new String[]{getString(R.string.monotrack),getString(R.string.syncmultitrack),getString(R.string.asyncmultitrack)},new DialogInterface.OnClickListener()
 			{
 				@Override
@@ -166,12 +166,24 @@ public class MainActivity extends Activity
 					b = ByteBuffer.allocate(2);
 					b.position(1);
 					b.put((byte)p2);
+					b.position(0);
 					midi.put(b);
+					update();
+					trackno();
 				}
 			}
 		);
 		ad.show();
-		update();
+	}
+
+	void trackno()
+	{
+		LayoutInflater li = LayoutInflater.from(this); 
+        View v = li.inflate(R.layout.trackno, null); 
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle(R.string.trackcnt)
+		.setView(v);
+		ad.show();
 	}
 
 	void eventchk(final int eventid)
