@@ -7,8 +7,14 @@
 
 	<TextView
 		android:layout_height="wrap_content"
-		android:text="Text"
+		android:text="@string/trackcnt"
 		android:layout_width="wrap_content"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:inputType="number"
+		android:layout_width="match_parent"
+		android:id="@+id/trackcount"/>
 
 </LinearLayout>
 

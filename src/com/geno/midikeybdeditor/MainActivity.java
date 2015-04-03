@@ -18,6 +18,7 @@ public class MainActivity extends Activity
 	public String note,remain,use,event,confirm,cancel,velocity;
 	public StringBuffer sb;
 	public ByteBuffer midi;
+	public EditText trackn;
 
 	//	These values are for functions
 	public byte eventvalue,notevalue,notelengthvalue;
@@ -77,6 +78,7 @@ public class MainActivity extends Activity
 		detail = (TextView)findViewById(R.id.detail);
 		addevent = (Button)findViewById(R.id.addevent);
 		addmetaevent = (Button)findViewById(R.id.addmetaevent);
+		trackn = (EditText)findViewById(R.id.trackcount);
 
 	//	Get byte buffer for editing
 		sb = new StringBuffer();
@@ -182,7 +184,24 @@ public class MainActivity extends Activity
         View v = li.inflate(R.layout.trackno, null); 
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.trackcnt)
-		.setView(v);
+		.setView(v)
+		.setPositiveButton(R.string.confirm,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					ByteBuffer b;
+					b = ByteBuffer.allocate(2);
+					b.position(1);
+					Toast.makeText(MainActivity.this,trackn.getText().toString(),Toast.LENGTH_SHORT).show();
+//					b.put((byte)Integer.parseInt(trackn.getText().toString()));
+					b.position(0);
+					midi.put(b);
+					update();
+				}
+			}
+		)
+		.setNegativeButton(R.string.cancel,null);
 		ad.show();
 	}
 
@@ -325,16 +344,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton
-		(R.string.cancel,new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface p1, int p2)
-				{
-					
-				}
-			}
-		);
+		.setNegativeButton(R.string.cancel,null);
 		ad.show();
 	}
 
@@ -369,16 +379,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton
-		(R.string.cancel,new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface p1, int p2)
-				{
-
-				}
-			}
-		);
+		.setNegativeButton(R.string.cancel,null);
 		ad.show();
 	}
 
@@ -489,16 +490,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton
-		(R.string.cancel,new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface p1, int p2)
-				{
-					
-				}
-			}
-		);
+		.setNegativeButton(R.string.cancel,null);
 		ad.show();
 	}
 
@@ -552,16 +544,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton
-		(R.string.cancel,new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface p1, int p2)
-				{
-
-				}
-			}
-		);
+		.setNegativeButton(R.string.cancel,null);
 		ad.show();
 	}
 }
