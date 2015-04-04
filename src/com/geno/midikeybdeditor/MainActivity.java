@@ -102,7 +102,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		trackcnt();
+		vlf(20);
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -431,6 +431,26 @@ public class MainActivity extends Activity
 		return unsigned < 128 ? (byte)unsigned : (byte)(unsigned-256);
 	}
 
+	String vlf(int input)
+	{
+		String out = "";
+		String s = Integer.toBinaryString(input);
+		if(s.length()<8)
+		{
+			for(int c = 8-s.length();c>0;c--)
+			{
+				out = out + "0";
+			}
+			out = out + s;
+		}
+		else if (s.length()>=8 && s.length()<16)
+		{
+			
+		}
+		toast(out);
+		return out;
+	}
+
 	/*	This function is now very simple
 	*	but later it will have its responsibility
 	*	of DECODING A MIDI
@@ -451,6 +471,12 @@ public class MainActivity extends Activity
 			res=res+" ";
 		}
 		return res;
+	}
+
+	//Debugger function
+	void toast(String innerText)
+	{
+		Toast.makeText(MainActivity.this,innerText,Toast.LENGTH_SHORT).show();
 	}
 
 	//File function
