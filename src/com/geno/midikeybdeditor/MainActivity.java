@@ -78,7 +78,6 @@ public class MainActivity extends Activity
 		detail = (TextView)findViewById(R.id.detail);
 		addevent = (Button)findViewById(R.id.addevent);
 		addmetaevent = (Button)findViewById(R.id.addmetaevent);
-		trackn = (EditText)findViewById(R.id.trackcount);
 
 	//	Get byte buffer for editing
 		sb = new StringBuffer();
@@ -181,7 +180,8 @@ public class MainActivity extends Activity
 	void trackno()
 	{
 		LayoutInflater li = LayoutInflater.from(this); 
-        View v = li.inflate(R.layout.trackno, null); 
+		View v = li.inflate(R.layout.trackno, null);
+		trackn = (EditText)v.findViewById(R.id.trackcount);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.trackcnt)
 		.setView(v)
@@ -193,8 +193,7 @@ public class MainActivity extends Activity
 					ByteBuffer b;
 					b = ByteBuffer.allocate(2);
 					b.position(1);
-					Toast.makeText(MainActivity.this,trackn.getText().toString(),Toast.LENGTH_SHORT).show();
-//					b.put((byte)Integer.parseInt(trackn.getText().toString()));
+					b.put((byte)Integer.parseInt(trackn.getText().toString()));
 					b.position(0);
 					midi.put(b);
 					update();
