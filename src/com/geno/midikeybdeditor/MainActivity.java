@@ -447,6 +447,14 @@ public class MainActivity extends Activity
 		{
 			
 		}
+		else if (s.length()>=16 && s.length()<24)
+		{
+			
+		}
+		else if (s.length()>=24 && s.length()<32)
+		{
+			
+		}
 		toast(out);
 		return out;
 	}
