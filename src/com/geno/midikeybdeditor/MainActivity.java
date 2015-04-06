@@ -102,7 +102,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		vlf(20);
+		variableLengthFormat(46);
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -431,31 +431,28 @@ public class MainActivity extends Activity
 		return unsigned < 128 ? (byte)unsigned : (byte)(unsigned-256);
 	}
 
-	String vlf(int input)
+	String variableLengthFormat(int input)
 	{
-		String out = "";
 		String s = Integer.toBinaryString(input);
-		if(s.length()<8)
+		while(s.length()<28)
+			s="0"+s;
+		s="1"+s;
+		s=s.substring(0,8)+"1"+s.substring(8);
+		s=s.substring(0,16)+"1"+s.substring(16);
+		s=s.substring(0,24)+"0"+s.substring(24);
+		while(s.startsWith("10000000"))
+			s=s.substring(8);
+		toast(Integer.toHexString(bin2hex(s))+"");
+		return s;
+	}
+
+	int bin2hex(String binary)
+	{
+		int out = 0;
+		for(int i = 0;i<binary.length();i++)
 		{
-			for(int c = 8-s.length();c>0;c--)
-			{
-				out = out + "0";
-			}
-			out = out + s;
+			out = Integer.parseInt(String.valueOf(binary.charAt(i)))*(int)(Math.pow((double)2,(double)(binary.length()-i-1)))+out;
 		}
-		else if (s.length()>=8 && s.length()<16)
-		{
-			
-		}
-		else if (s.length()>=16 && s.length()<24)
-		{
-			
-		}
-		else if (s.length()>=24 && s.length()<32)
-		{
-			
-		}
-		toast(out);
 		return out;
 	}
 
