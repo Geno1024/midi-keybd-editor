@@ -102,7 +102,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		variableLengthFormat(46);
+		variableLengthFormat(2568);
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -449,7 +449,7 @@ public class MainActivity extends Activity
 	int bin2hex(String binary)
 	{
 		int out = 0;
-		for(int i = 0;i<binary.length();i++)
+		for(int i = 0;i < binary.length();i++)
 		{
 			out = Integer.parseInt(String.valueOf(binary.charAt(i)))*(int)(Math.pow((double)2,(double)(binary.length()-i-1)))+out;
 		}
