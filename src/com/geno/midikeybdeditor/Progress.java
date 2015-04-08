@@ -10,7 +10,7 @@ public class Progress
 	//	0x10,
 	//	0x18,
 
-	//	0x20,
+		0x20,
 	/*	0x28,*/	                           0x2F,
 
 	//	0x30,

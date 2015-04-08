@@ -56,6 +56,7 @@
 	<string name="meta05">05 歌词</string>
 	<string name="meta06">06 标签名</string>
 	<string name="meta07">07 浮点音符</string>
+	<string name="meta20">20 MIDI 频道前缀</string>
 	<string name="meta2F">2F 轨道结束事件</string>
 	<string name="meta51">51 设定拍子</string>
 	<string name="meta54">54 SMPTE 偏移</string>
