@@ -45,6 +45,22 @@
 	<!--Intro strings-->
 	<string name="newval">New Value</string>
 	<string name="eventidB_sta1">Controller Number</string>
+
+	<!--Meta events-->
+	<string name="meta00">00 Track Number</string>
+	<string name="meta01">01 Text Events</string>
+	<string name="meta02">02 Copyright Messages</string>
+	<string name="meta03">03 Track Name</string>
+	<string name="meta04">04 Track Instrument Name</string>
+	<string name="meta05">05 Lyrics</string>
+	<string name="meta06">06 Tag Name</string>
+	<string name="meta07">07 Float Note</string>
+	<string name="meta2F">2F Track End Event</string>
+	<string name="meta51">51 Set Notes</string>
+	<string name="meta54">54 SMPTE Offset</string>
+	<string name="meta58">58 Notes</string>
+	<string name="meta59">59 Note Signs</string>
+	<string name="meta7F">7F Sequencer Details</string>
 	
 	<!--Instrument family names-->
 	<string name="fami1">0(0-7) Piano</string>

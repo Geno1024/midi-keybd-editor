@@ -46,6 +46,22 @@
 	<string name="newval">新值</string>
 	<string name="eventidB_sta1">控制号</string>
 
+	<!--Meta events-->
+	<string name="meta00">00 轨道序号</string>
+	<string name="meta01">01 文本事件</string>
+	<string name="meta02">02 版权信息</string>
+	<string name="meta03">03 序列/轨道名称</string>
+	<string name="meta04">04 轨道乐器名</string>
+	<string name="meta05">05 歌词</string>
+	<string name="meta06">06 标签名</string>
+	<string name="meta07">07 浮点音符</string>
+	<string name="meta2F">2F 轨道结束事件</string>
+	<string name="meta51">51 设定拍子</string>
+	<string name="meta54">54 SMPTE 偏移</string>
+	<string name="meta58">58 拍子记号</string>
+	<string name="meta59">59 音调符号</string>
+	<string name="meta7F">7F 音序器的详细信息</string>
+
 	<!--Instrument family names-->
 	<string name="fami1">0(0-7) 钢琴</string>
 	<string name="fami2">0(8-F) 打击乐器</string>
