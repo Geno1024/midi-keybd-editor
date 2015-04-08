@@ -12,6 +12,7 @@
 	<string name="note">Note</string>
 	<string name="velocity">Velocity</string>
 	<string name="event">Event</string>
+	<string name="metaevent">Meta Event</string>
 	<string name="track">Track</string>
 	<string name="note12">High/Low 12</string>
 	<string name="velocityintro">0 ~ 127</string>

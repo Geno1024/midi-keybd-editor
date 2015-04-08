@@ -15,7 +15,7 @@ public class MainActivity extends Activity
 {
 	public TextView expl,src,detail,addevent,addmetaevent;
 	public String[] expla,selectevent;
-	public String note,remain,use,event,confirm,cancel,velocity;
+	public String note,remain,use,confirm,cancel,velocity;
 	public StringBuffer sb;
 	public ByteBuffer midi;
 	public EditText trackn;
@@ -28,6 +28,7 @@ public class MainActivity extends Activity
 	public String[] trackno = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
 	public String[] note12 = {"8x -5","8x -4","8x -3","8x -2","8x -1","8x ±0","8x +1","8x +2","8x +3","8x +4","8x +5"};
 	public String[] insfaminame;
+	public String[] metaevents;
 	public String[][] insname;
 
 	/*	This integer is an important flag in this program
@@ -52,13 +53,13 @@ public class MainActivity extends Activity
 		note = getString(R.string.note);
 		remain = getString(R.string.remain);
 		use = getString(R.string.nowuse);
-		event = getString(R.string.event);
 		confirm = getString(R.string.confirm);
 		cancel = getString(R.string.cancel);
 		velocity = getString(R.string.velocity);
 		selectevent = new String[7];
 		insfaminame = new String[16];
 		insname = new String[16][8];
+		metaevents = new String[Progress.metaEventStatus.length];
 		/*	Note that in R.java
 		*	the string is sorted by name
 		*	so we can getstring in this
@@ -71,6 +72,8 @@ public class MainActivity extends Activity
 		for(int i = 0;i < 16;i++)
 			for(int j = 0;j < 8;j++)
 				insname[i][j]=getString(R.string.inst00+i*8+j);
+		for(int i = 0;i < Progress.metaEventStatus.length; i++)
+			metaevents[i]=getString(R.string.meta00+i);
 
 	//	Get layout id
 		expl = (TextView)findViewById(R.id.explanation);
@@ -111,7 +114,9 @@ public class MainActivity extends Activity
 				@Override
 				public void onClick(View p1)
 				{
-					AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this).setTitle(event).setItems
+					AlertDialog.Builder ad=new AlertDialog.Builder(MainActivity.this)
+					.setTitle(R.string.event)
+					.setItems
 					(selectevent, new DialogInterface.OnClickListener()
 						{
 							@Override
@@ -134,7 +139,16 @@ public class MainActivity extends Activity
 				public void onClick(View p1)
 				{
 					AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-					;
+					.setTitle(R.string.metaevent)
+					.setItems(metaevents,new DialogInterface.OnClickListener()
+						{
+							@Override
+							public void onClick(DialogInterface p1, int p2)
+							{
+								// TODO: Implement this method
+							}
+						}
+					);
 					ad.show();
 				}
 			}
