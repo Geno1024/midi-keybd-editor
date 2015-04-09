@@ -105,7 +105,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		variableLengthFormat(2568);
+		getMessage(0x02);
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -145,7 +145,7 @@ public class MainActivity extends Activity
 							@Override
 							public void onClick(DialogInterface p1, int p2)
 							{
-								// TODO: Implement this method
+								
 							}
 						}
 					);
@@ -192,9 +192,8 @@ public class MainActivity extends Activity
 	}
 
 	void trackno()
-	{
-		LayoutInflater li = LayoutInflater.from(this); 
-		View v = li.inflate(R.layout.trackno, null);
+	{ 
+		View v = LayoutInflater.from(this).inflate(R.layout.trackno, null);
 		trackn = (EditText)v.findViewById(R.id.trackcount);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.trackcnt)
@@ -215,6 +214,40 @@ public class MainActivity extends Activity
 			}
 		)
 		.setNegativeButton(R.string.cancel,null);
+		ad.show();
+	}
+
+	void getMessage(final int metaEventId)
+	{
+		View v = LayoutInflater.from(this).inflate(R.layout.textmessage, null);
+		final EditText t = (EditText)v.findViewById(R.id.innertext);
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setView(v)
+		.setPositiveButton(R.string.confirm,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					String msg = t.getText().toString();
+					char[] c = msg.toCharArray();
+					ByteBuffer b,charbuf;
+					b = ByteBuffer.allocate(c.length);
+					charbuf = ByteBuffer.allocate(2);
+					for(int i = 0;i<c.length;i++)
+					{
+						charbuf.putChar(c[i]);
+						charbuf.position(1);
+						b.put(charbuf);
+						charbuf.position(0);
+					}
+					b.position(0);
+					midi.put(new byte[]{ubtosb(0xFF),ubtosb(metaEventId)});
+					midi.put(Byte.decode("0x"+variableLengthFormat(c.length)));
+					midi.put(b);
+					update();
+				}
+			}
+		);
 		ad.show();
 	}
 
@@ -456,8 +489,7 @@ public class MainActivity extends Activity
 		s=s.substring(0,24)+"0"+s.substring(24);
 		while(s.startsWith("10000000"))
 			s=s.substring(8);
-		toast(Integer.toHexString(bin2hex(s))+"");
-		return s;
+		return Integer.toHexString(bin2hex(s));
 	}
 
 	int bin2hex(String binary)
