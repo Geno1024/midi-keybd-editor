@@ -145,7 +145,31 @@ public class MainActivity extends Activity
 							@Override
 							public void onClick(DialogInterface p1, int p2)
 							{
-								
+								switch(Progress.metaEventStatus[p2])
+								{
+									case 0x01:
+										getMessage(0x01);
+										break;
+									case 0x02:
+										getMessage(0x02);
+										break;
+									case 0x03:
+										getMessage(0x03);
+										break;
+									case 0x04:
+										getMessage(0x04);
+										break;
+									case 0x05:
+										getMessage(0x05);
+										break;
+									case 0x06:
+										getMessage(0x06);
+										break;
+									case 0x07:
+										getMessage(0x07);
+										break;
+									
+								}
 							}
 						}
 					);
@@ -217,13 +241,18 @@ public class MainActivity extends Activity
 		ad.show();
 	}
 
+	//Test String
+	/*dguihghcidus8socid7dofie8dis7eiv6sueodofodirksusm jsusjsirieidurud8dkvuskci ovidodiguakdifiskcusodidure8e8?idieicieicuwuvcifoc8rpg9rpg9rpfofof9govofidppvofp co ocodjwkdkvi o lcl icorodld*/
+
 	void getMessage(final int metaEventId)
 	{
 		View v = LayoutInflater.from(this).inflate(R.layout.textmessage, null);
 		final EditText t = (EditText)v.findViewById(R.id.innertext);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setTitle(getString(R.string.meta00+metaEventId).substring(3))
 		.setView(v)
-		.setPositiveButton(R.string.confirm,new DialogInterface.OnClickListener()
+		.setPositiveButton
+		(R.string.confirm,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -247,7 +276,8 @@ public class MainActivity extends Activity
 					update();
 				}
 			}
-		);
+		)
+		.setNegativeButton(R.string.cancel,null);
 		ad.show();
 	}
 
@@ -363,11 +393,10 @@ public class MainActivity extends Activity
 	//Bx needed
 	void ctrlchg()
 	{
-		String a = getString(R.string.eventidB);
 		final EditText t = new EditText(MainActivity.this);
 		t.setHint(R.string.eventidB_sta1);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-		.setTitle(String.copyValueOf(a.toCharArray(),3,a.length()-3))
+		.setTitle(getString(R.string.eventidB).substring(3))
 		.setView(t)
 		.setPositiveButton
 		(R.string.confirm,new DialogInterface.OnClickListener()
@@ -432,9 +461,8 @@ public class MainActivity extends Activity
 	//	Cx needed
 	void prgmchg()
 	{
-		String a = getString(R.string.eventidC);
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-		.setTitle(String.copyValueOf(a.toCharArray(),3,a.length()-3))
+		.setTitle(getString(R.string.eventidC).substring(3))
 		.setItems
 		(insfaminame,new DialogInterface.OnClickListener()
 			{
