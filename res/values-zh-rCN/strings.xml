@@ -16,7 +16,7 @@
 	<string name="track">音轨</string>
 	<string name="note12">高低八度</string>
 	<string name="velocityintro">0 ~ 127</string>
-	
+
 	<!--Event names-->
 	<string name="trackcnt">轨道流量？</string>
 	<string name="eventid8">8x 键盘释放事件</string>
@@ -26,7 +26,7 @@
 	<string name="eventidC">Cx 程序调换事件</string>
 	<string name="eventidD">Dx 通道接触事件</string>
 	<string name="eventidE">Ex 音高事件</string>
-	
+
 	<!--Button names-->
 	<string name="confirm">确认</string>
 	<string name="cancel">取消</string>
@@ -34,7 +34,8 @@
 	<string name="save">保存</string>
 	<string name="addmidievent">添加MIDI事件</string>
 	<string name="addmetaevent">添加元事件</string>
-	
+	<string name="inputastring">Please input some text messages.</string>
+
 	<!--Status names-->
 	<string name="finish">完成！</string>
 	<string name="remain">剩余：</string>
@@ -91,7 +92,7 @@
 	<string name="inst05">05 合唱加钢琴</string>
 	<string name="inst06">06 拨弦古钢琴</string>
 	<string name="inst07">07 击弦古钢琴</string>
-	
+
 	<string name="inst08">08 钢片琴</string>
 	<string name="inst09">09 钟琴</string>
 	<string name="inst0A">0A 八音盒</string>
