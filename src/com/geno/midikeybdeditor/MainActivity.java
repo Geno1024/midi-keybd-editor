@@ -241,6 +241,11 @@ public class MainActivity extends Activity
 		ad.show();
 	}
 
+	void deltatime()
+	{
+		
+	}
+
 	//Test String
 	/*dguihghcidus8socid7dofie8dis7eiv6sueodofodirksusm jsusjsirieidurud8dkvuskci ovidodiguakdifiskcusodidure8e8?idieicieicuwuvcifoc8rpg9rpg9rpfofof9govofidppvofp co ocodjwkdkvi o lcl icorodld*/
 
@@ -518,6 +523,19 @@ public class MainActivity extends Activity
 		while(s.startsWith("10000000"))
 			s=s.substring(8);
 		return Integer.toHexString(bin2hex(s));
+	}
+
+	Byte[] int2byte(int hexint)
+	{
+		String out = Integer.toHexString(hexint);
+		Byte[] a = null;
+		try
+		{
+			a = new Byte[]{Byte.decode(out.substring(6,8)),Byte.decode(out.substring(4,6)),Byte.decode(out.substring(2,4)),Byte.decode(out.substring(0,2))};
+		}
+		catch (Exception e)
+		{}
+		return a;
 	}
 
 	int bin2hex(String binary)
