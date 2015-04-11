@@ -563,25 +563,25 @@ public class MainActivity extends Activity
 			switch(hexString.charAt(i))
 			{
 				case 'A':
-					i=(int)(i+Math.pow(16,hexString.length()-i)*10);
+					out=(int)(out+Math.pow(16,hexString.length()-i)*10);
 					break;
 				case 'B':
-					i=(int)(i+Math.pow(16,hexString.length()-i)*11);
+					out=(int)(out+Math.pow(16,hexString.length()-i)*11);
 					break;
 				case 'C':
-					i=(int)(i+Math.pow(16,hexString.length()-i)*12);
+					out=(int)(out+Math.pow(16,hexString.length()-i)*12);
 					break;
 				case 'D':
-					i=(int)(i+Math.pow(16,hexString.length()-i)*13);
+					out=(int)(out+Math.pow(16,hexString.length()-i)*13);
 					break;
 				case 'E':
-					i=(int)(i+Math.pow(16,hexString.length()-i)*14);
+					out=(int)(out+Math.pow(16,hexString.length()-i)*14);
 					break;
 				case 'F':
-					i=(int)(i+Math.pow(16,hexString.length()-i)*15);
+					out=(int)(out+Math.pow(16,hexString.length()-i)*15);
 					break;
 				default:
-					i=(int)(i+Math.pow(16,hexString.length()-i)*Integer.parseInt(""+hexString.charAt(i)));
+					out=(int)(out+Math.pow(16,hexString.length()-i)*Integer.parseInt(""+hexString.charAt(i)));
 					break;
 			}
 		}
