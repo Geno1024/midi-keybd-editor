@@ -105,7 +105,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		getMessage(0x02);
+		toast(hex2dec("100000")+"");
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -276,7 +276,7 @@ public class MainActivity extends Activity
 					}
 					b.position(0);
 					midi.put(new byte[]{ubtosb(0xFF),ubtosb(metaEventId)});
-					midi.put(Byte.decode("0x"+variableLengthFormat(c.length)));
+					midi.put(int2byte(Integer.parseInt(variableLengthFormat(c.length))));
 					midi.put(b);
 					update();
 				}
@@ -525,17 +525,24 @@ public class MainActivity extends Activity
 		return Integer.toHexString(bin2hex(s));
 	}
 
-	Byte[] int2byte(int hexint)
+	byte[] int2byte(int hexint)
 	{
 		String out = Integer.toHexString(hexint);
-		Byte[] a = null;
-		try
+		byte[] a ;
+		odd2even(out);
+		a = new byte[out.length()];
+		for(int i = 0;i < out.length()/2;i++)
 		{
-			a = new Byte[]{Byte.decode(out.substring(6,8)),Byte.decode(out.substring(4,6)),Byte.decode(out.substring(2,4)),Byte.decode(out.substring(0,2))};
+			a[i]=(byte)Integer.parseInt("0x"+out.substring(i,i+1));
 		}
-		catch (Exception e)
-		{}
 		return a;
+	}
+
+	String odd2even(String oddLengthString)
+	{
+		if(Math.IEEEremainder(oddLengthString.length(),2)!=0)
+			oddLengthString="0"+oddLengthString;
+		return oddLengthString;
 	}
 
 	int bin2hex(String binary)
@@ -544,6 +551,39 @@ public class MainActivity extends Activity
 		for(int i = 0;i < binary.length();i++)
 		{
 			out = Integer.parseInt(String.valueOf(binary.charAt(i)))*(int)(Math.pow((double)2,(double)(binary.length()-i-1)))+out;
+		}
+		return out;
+	}
+
+	int hex2dec(String hexString)
+	{
+		int out = 0;
+		for(int i = 0;i<hexString.length();i++)
+		{
+			switch(hexString.charAt(i))
+			{
+				case 'A':
+					i=(int)(i+Math.pow(16,hexString.length()-i)*10);
+					break;
+				case 'B':
+					i=(int)(i+Math.pow(16,hexString.length()-i)*11);
+					break;
+				case 'C':
+					i=(int)(i+Math.pow(16,hexString.length()-i)*12);
+					break;
+				case 'D':
+					i=(int)(i+Math.pow(16,hexString.length()-i)*13);
+					break;
+				case 'E':
+					i=(int)(i+Math.pow(16,hexString.length()-i)*14);
+					break;
+				case 'F':
+					i=(int)(i+Math.pow(16,hexString.length()-i)*15);
+					break;
+				default:
+					i=(int)(i+Math.pow(16,hexString.length()-i)*Integer.parseInt(""+hexString.charAt(i)));
+					break;
+			}
 		}
 		return out;
 	}
