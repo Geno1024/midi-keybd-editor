@@ -105,7 +105,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		toast(hex2dec("100000")+"");
+		toast(hex2dec("ABCDEF")+"");
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -563,25 +563,25 @@ public class MainActivity extends Activity
 			switch(hexString.charAt(i))
 			{
 				case 'A':
-					out=(int)(out+Math.pow(16,hexString.length()-i)*10);
+					out=(int)(out+Math.pow(16,hexString.length()-i-1)*10);
 					break;
 				case 'B':
-					out=(int)(out+Math.pow(16,hexString.length()-i)*11);
+					out=(int)(out+Math.pow(16,hexString.length()-i-1)*11);
 					break;
 				case 'C':
-					out=(int)(out+Math.pow(16,hexString.length()-i)*12);
+					out=(int)(out+Math.pow(16,hexString.length()-i-1)*12);
 					break;
 				case 'D':
-					out=(int)(out+Math.pow(16,hexString.length()-i)*13);
+					out=(int)(out+Math.pow(16,hexString.length()-i-1)*13);
 					break;
 				case 'E':
-					out=(int)(out+Math.pow(16,hexString.length()-i)*14);
+					out=(int)(out+Math.pow(16,hexString.length()-i-1)*14);
 					break;
 				case 'F':
-					out=(int)(out+Math.pow(16,hexString.length()-i)*15);
+					out=(int)(out+Math.pow(16,hexString.length()-i-1)*15);
 					break;
 				default:
-					out=(int)(out+Math.pow(16,hexString.length()-i)*Integer.parseInt(""+hexString.charAt(i)));
+					out=(int)(out+Math.pow(16,hexString.length()-i-1)*Integer.parseInt(""+hexString.charAt(i)));
 					break;
 			}
 		}
