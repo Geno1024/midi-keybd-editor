@@ -105,7 +105,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		toast(Byte.toString(int2byte(50)[0])+"");
+		toast(printbytearr(int2byte(200)));
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -608,6 +608,14 @@ public class MainActivity extends Activity
 			res=res+" ";
 		}
 		return res;
+	}
+
+	String printbytearr(byte[] input)
+	{
+		String output = "";
+		for(int i = 0;i<input.length;i++)
+		output=output+Byte.toString(input[i]);
+		return output;
 	}
 
 	//Debugger function
