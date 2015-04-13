@@ -105,7 +105,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		toast(hex2dec("ABCDEF")+"");
+		toast(Byte.toString(int2byte(50)[0])+"");
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -276,7 +276,7 @@ public class MainActivity extends Activity
 					}
 					b.position(0);
 					midi.put(new byte[]{ubtosb(0xFF),ubtosb(metaEventId)});
-					midi.put(int2byte(Integer.parseInt(variableLengthFormat(c.length))));
+					midi.put(int2byte(hex2dec(variableLengthFormat(c.length))));
 					midi.put(b);
 					update();
 				}
@@ -533,14 +533,14 @@ public class MainActivity extends Activity
 		a = new byte[out.length()];
 		for(int i = 0;i < out.length()/2;i++)
 		{
-			a[i]=(byte)Integer.parseInt("0x"+out.substring(i,i+1));
+			a[i]=(byte)Integer.parseInt(out.substring(2*i,2*i+1));
 		}
 		return a;
 	}
 
 	String odd2even(String oddLengthString)
 	{
-		if(Math.IEEEremainder(oddLengthString.length(),2)!=0)
+		if(oddLengthString.length()%2!=0)
 			oddLengthString="0"+oddLengthString;
 		return oddLengthString;
 	}
@@ -562,22 +562,22 @@ public class MainActivity extends Activity
 		{
 			switch(hexString.charAt(i))
 			{
-				case 'A':
+				case 'a':
 					out=(int)(out+Math.pow(16,hexString.length()-i-1)*10);
 					break;
-				case 'B':
+				case 'b':
 					out=(int)(out+Math.pow(16,hexString.length()-i-1)*11);
 					break;
-				case 'C':
+				case 'c':
 					out=(int)(out+Math.pow(16,hexString.length()-i-1)*12);
 					break;
-				case 'D':
+				case 'd':
 					out=(int)(out+Math.pow(16,hexString.length()-i-1)*13);
 					break;
-				case 'E':
+				case 'e':
 					out=(int)(out+Math.pow(16,hexString.length()-i-1)*14);
 					break;
-				case 'F':
+				case 'f':
 					out=(int)(out+Math.pow(16,hexString.length()-i-1)*15);
 					break;
 				default:
