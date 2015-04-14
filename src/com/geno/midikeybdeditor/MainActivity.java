@@ -105,7 +105,6 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		toast(printbytearr(int2byte(200)));
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -168,7 +167,10 @@ public class MainActivity extends Activity
 									case 0x07:
 										getMessage(0x07);
 										break;
-									
+									case 0x2f:
+										midi.put(new byte[]{ubtosb(0xff),0x2f,0});
+										update();
+										break;
 								}
 							}
 						}
