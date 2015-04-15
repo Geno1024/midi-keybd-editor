@@ -105,6 +105,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
+		sysEx();
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -504,9 +505,29 @@ public class MainActivity extends Activity
 		ad.show();
 	}
 
+	//	SysEx Event
+	//	This name right?
+
+	void sysEx()
+	{
+		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+		.setItems
+		(new String[]{"0xF8","0xFA","0xFB","0xFC"},
+		new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					// TODO: Implement this method
+				}
+			}
+		);
+		ad.show();
+	}
+
 	//	Event end
 
-	//Calc function
+	//	Calc function
 	byte ubtosb(int unsigned)
 	{
 		//	Unsigned byte to signed byte
