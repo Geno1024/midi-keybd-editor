@@ -56,22 +56,22 @@ public class MainActivity extends Activity
 		confirm = getString(R.string.confirm);
 		cancel = getString(R.string.cancel);
 		velocity = getString(R.string.velocity);
-		selectevent = new String[7];
-		insfaminame = new String[16];
-		insname = new String[16][8];
+		selectevent = new String[Progress.eventCount];
+		insfaminame = new String[Progress.instFamilyCount];
+		insname = new String[Progress.instFamilyCount][Progress.instCountPerFami];
 		metaevents = new String[Progress.metaEventStatus.length];
 		/*	Note that in R.java
 		*	the string is sorted by name
 		*	so we can getstring in this
 		*	AMAZING way!
 		*/
-		for(int i = 0;i < 7;i++)
+		for(int i = 0;i < Progress.eventCount;i++)
 			selectevent[i]=getString(R.string.eventid8+i);
-		for(int i = 0;i < 16;i++)
+		for(int i = 0;i < Progress.instFamilyCount;i++)
 			insfaminame[i]=getString(R.string.fami1+i);
-		for(int i = 0;i < 16;i++)
-			for(int j = 0;j < 8;j++)
-				insname[i][j]=getString(R.string.inst00+i*8+j);
+		for(int i = 0;i < Progress.instFamilyCount;i++)
+			for(int j = 0;j < Progress.instCountPerFami;j++)
+				insname[i][j]=getString(R.string.inst00+i*Progress.instCountPerFami+j);
 		for(int i = 0;i < Progress.metaEventStatus.length; i++)
 			metaevents[i]=getString(R.string.meta00+i);
 

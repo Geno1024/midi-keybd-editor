@@ -2,7 +2,7 @@ package com.geno.midikeybdeditor;
 
 public class Progress
 {
-	public static final int[] metaEventStatus=
+	public static final int[] metaEventStatus =
 	{
 		0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,
 	//	0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,
@@ -28,4 +28,10 @@ public class Progress
 	//	0x70,
 	/*	0x78,*/                            0x7F,
 	};
+
+	public static final int eventCount = 7;
+
+	public static final int instFamilyCount = 16;
+
+	public static final int instCountPerFami = 8;
 }
