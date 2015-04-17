@@ -28,8 +28,6 @@
 	<string name="eventidE">Ex 音高事件</string>
 
 	<!--Button names-->
-	<string name="confirm">确认</string>
-	<string name="cancel">取消</string>
 	<string name="open">打开</string>
 	<string name="save">保存</string>
 	<string name="addmidievent">添加MIDI事件</string>

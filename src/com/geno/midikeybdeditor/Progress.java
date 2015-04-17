@@ -34,4 +34,41 @@ public class Progress
 	public static final int instFamilyCount = 16;
 
 	public static final int instCountPerFami = 8;
+
+	public static final byte[] midiHeader = 
+	new byte[]
+	{
+		0x4D,0x54,0x68,0x64,0x00,0x00,//MThd
+		0x00,0x06,//6 bytes
+	};
+
+	public static String[] notedefinedname = 
+	{
+		"C",
+			"C#",
+		"D",
+			"D#",
+		"E",
+		"F",
+			"F#",
+		"G",
+			"G#",
+		"A",
+			"A#",
+		"B",
+	};
+
+	public static String[] trackno = 
+	{
+		"0","1","2","3","4","5","6","7",
+		"8","9","10","11","12","13","14","15"
+	};
+
+	public static String[] note12 = 
+	{
+		"8x -5","8x -4","8x -3","8x -2","8x -1",
+		"8x ±0",
+		"8x +1","8x +2","8x +3","8x +4","8x +5",
+	};
+
 }

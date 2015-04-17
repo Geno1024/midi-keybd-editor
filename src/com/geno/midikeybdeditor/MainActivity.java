@@ -15,7 +15,7 @@ public class MainActivity extends Activity
 {
 	public TextView expl,src,detail,addevent,addmetaevent;
 	public String[] expla,selectevent;
-	public String note,remain,use,confirm,cancel,velocity;
+	public String remain,use;
 	public StringBuffer sb;
 	public ByteBuffer midi;
 	public EditText trackn;
@@ -24,11 +24,7 @@ public class MainActivity extends Activity
 	public byte eventvalue,notevalue,notelengthvalue;
 	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
 	public ByteBuffer eventnotebuffer;
-	public String[] notedefinedname = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
-	public String[] trackno = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
-	public String[] note12 = {"8x -5","8x -4","8x -3","8x -2","8x -1","8x ±0","8x +1","8x +2","8x +3","8x +4","8x +5"};
-	public String[] insfaminame;
-	public String[] metaevents;
+	public String[] insfaminame,metaevents;
 	public String[][] insname;
 
 	/*	This integer is an important flag in this program
@@ -50,12 +46,8 @@ public class MainActivity extends Activity
 		setContentView(R.layout.main);
 
 	//	Get string res
-		note = getString(R.string.note);
 		remain = getString(R.string.remain);
 		use = getString(R.string.nowuse);
-		confirm = getString(R.string.confirm);
-		cancel = getString(R.string.cancel);
-		velocity = getString(R.string.velocity);
 		selectevent = new String[Progress.eventCount];
 		insfaminame = new String[Progress.instFamilyCount];
 		insname = new String[Progress.instFamilyCount][Progress.instCountPerFami];
@@ -86,7 +78,7 @@ public class MainActivity extends Activity
 		sb = new StringBuffer();
 		midi = ByteBuffer.allocate(1048576);
 		eventnotebuffer = ByteBuffer.allocate(3);
-		midi.put(new byte[]{0x4D,0x54,0x68,0x64,0x0,0x0,0x0,0x6});
+		midi.put(Progress.midiHeader);
 
 	//	Init display
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
@@ -225,7 +217,7 @@ public class MainActivity extends Activity
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.trackcnt)
 		.setView(v)
-		.setPositiveButton(R.string.confirm,new DialogInterface.OnClickListener()
+		.setPositiveButton(android.R.string.ok,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -240,7 +232,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton(R.string.cancel,null);
+		.setNegativeButton(android.R.string.cancel,null);
 		ad.show();
 	}
 
@@ -250,7 +242,8 @@ public class MainActivity extends Activity
 	}
 
 	//Test String
-	/*dguihghcidus8socid7dofie8dis7eiv6sueodofodirksusm jsusjsirieidurud8dkvuskci ovidodiguakdifiskcusodidure8e8?idieicieicuwuvcifoc8rpg9rpg9rpfofof9govofidppvofp co ocodjwkdkvi o lcl icorodld*/
+	/*dguihghcidus8socid7dofie8dis7eiv6sueodofodirksusm jsusjsirieidurud8dkvuskci
+	ovidodiguakdifiskcusodidure8e8?idieicieicuwuvcifoc8rpg9rpg9rpfofof9govofidppvofp co ocodjwkdkvi o lcl icorodld*/
 
 	void getMessage(final int metaEventId)
 	{
@@ -260,7 +253,7 @@ public class MainActivity extends Activity
 		.setTitle(getString(R.string.meta00+metaEventId).substring(3))
 		.setView(v)
 		.setPositiveButton
-		(R.string.confirm,new DialogInterface.OnClickListener()
+		(android.R.string.ok,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -285,7 +278,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton(R.string.cancel,null);
+		.setNegativeButton(android.R.string.cancel,null);
 		ad.show();
 	}
 
@@ -295,7 +288,7 @@ public class MainActivity extends Activity
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.track)
 		.setItems
-		(trackno,new DialogInterface.OnClickListener()
+		(Progress.trackno,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -337,7 +330,7 @@ public class MainActivity extends Activity
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.note)
 		.setItems
-		(notedefinedname,new DialogInterface.OnClickListener()
+		(Progress.notedefinedname,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -346,7 +339,7 @@ public class MainActivity extends Activity
 					AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 					.setTitle(R.string.note12)
 					.setItems
-						(note12,new DialogInterface.OnClickListener()
+						(Progress.note12,new DialogInterface.OnClickListener()
 							{
 								@Override
 								public void onClick(DialogInterface p1,int p2)
@@ -375,7 +368,7 @@ public class MainActivity extends Activity
 		.setTitle(R.string.velocity)
 		.setView(t)
 		.setPositiveButton
-		(R.string.confirm,new DialogInterface.OnClickListener()
+		(android.R.string.ok,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -407,7 +400,7 @@ public class MainActivity extends Activity
 		.setTitle(getString(R.string.eventidB).substring(3))
 		.setView(t)
 		.setPositiveButton
-		(R.string.confirm,new DialogInterface.OnClickListener()
+		(android.R.string.ok,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -427,7 +420,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton(R.string.cancel,null);
+		.setNegativeButton(android.R.string.cancel,null);
 		ad.show();
 	}
 
@@ -438,7 +431,7 @@ public class MainActivity extends Activity
 		.setTitle(R.string.eventidB_sta1)
 		.setView(e)
 		.setPositiveButton
-		(R.string.confirm,new DialogInterface.OnClickListener()
+		(android.R.string.ok,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -462,7 +455,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton(R.string.cancel,null);
+		.setNegativeButton(android.R.string.cancel,null);
 		ad.show();
 	}
 
@@ -655,7 +648,7 @@ public class MainActivity extends Activity
 		.setTitle(R.string.save)
 		.setView(t)
 		.setPositiveButton
-		(R.string.confirm,new DialogInterface.OnClickListener()
+		(android.R.string.ok,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -683,7 +676,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton(R.string.cancel,null);
+		.setNegativeButton(android.R.string.cancel,null);
 		ad.show();
 	}
 
@@ -694,7 +687,7 @@ public class MainActivity extends Activity
 		.setTitle(R.string.open)
 		.setView(t)
 		.setPositiveButton
-		(R.string.confirm,new DialogInterface.OnClickListener()
+		(android.R.string.ok,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
@@ -737,7 +730,7 @@ public class MainActivity extends Activity
 				}
 			}
 		)
-		.setNegativeButton(R.string.cancel,null);
+		.setNegativeButton(android.R.string.cancel,null);
 		ad.show();
 	}
 }
