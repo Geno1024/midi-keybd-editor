@@ -103,6 +103,8 @@ public class MainActivity extends Activity
 		flag=1;
 		com.geno.necessity.About a = new com.geno.necessity.About();
 		a.about("",MainActivity.this);
+		com.geno.necessity.Debug d = new com.geno.necessity.Debug();
+		d.toast("d",MainActivity.this);
 		//about("",this);
 
 	//	Edit widget
