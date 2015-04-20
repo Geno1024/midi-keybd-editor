@@ -2,18 +2,17 @@ package com.geno.midikeybdeditor;
 
 import android.app.*;
 import android.content.*;
+import android.content.pm.*;
+import android.graphics.*;
+import android.graphics.drawable.*;
 import android.os.*;
+import android.text.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
-import java.nio.*;
-import android.text.*;
+import android.widget.LinearLayout.*;
 import java.io.*;
-import android.content.pm.*;
-import android.content.pm.PackageManager.*;
-import android.graphics.drawable.*;
-import android.widget.RelativeLayout.*;
-import android.graphics.*;
+import java.nio.*;
 
 public class MainActivity extends Activity
 {
@@ -91,21 +90,10 @@ public class MainActivity extends Activity
 		expl.setWidth(m.getDefaultDisplay().getWidth()/2);
 		src.setWidth(m.getDefaultDisplay().getWidth()/2);
 
-	//	Here I made a boring count for apk size
-		try
-		{
-			Toast.makeText(MainActivity.this,new File(this.getPackageManager().getApplicationInfo("com.geno.midikeybdeditor",0).sourceDir).length()+"",Toast.LENGTH_SHORT).show();
-		}
-		catch (Exception e)
-		{}
-
 	//	The func below are being tested
 		flag=1;
-		com.geno.necessity.About a = new com.geno.necessity.About();
+		com.geno.tools.About a = new com.geno.tools.About();
 		a.about("",MainActivity.this);
-		com.geno.necessity.Debug d = new com.geno.necessity.Debug();
-		d.toast("d",MainActivity.this);
-		//about("",this);
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -739,41 +727,6 @@ public class MainActivity extends Activity
 			}
 		)
 		.setNegativeButton(android.R.string.cancel,null);
-		ad.show();
-	}
-
-	void about(String inst,Context context)
-	{
-		PackageManager pm = context.getPackageManager();
-		LinearLayout layout = new LinearLayout(context);
-		ImageView appimage = new ImageView(context);
-		Drawable appdrawable = null;
-		TextView appname = new TextView(context);
-		TextView version = new TextView(context);
-
-		try
-		{
-			appdrawable=pm.getApplicationIcon(pm.getApplicationInfo(getPackageName(),pm.GET_META_DATA));
-			appname.setText(pm.getApplicationLabel(pm.getApplicationInfo(getPackageName(),pm.GET_META_DATA)));
-		}
-		catch (PackageManager.NameNotFoundException e){}
-
-		appimage.setImageDrawable(appdrawable);
-		appname.setTypeface(Typeface.MONOSPACE);
-		version.setText("\nBy Geno.\nY. Z. Chen\n\n"+inst);
-		version.setTypeface(Typeface.MONOSPACE);
-		version.setGravity(Gravity.CENTER);
-
-		layout.setOrientation(LinearLayout.VERTICAL);
-		layout.setGravity(Gravity.CENTER);
-		layout.addView(appimage,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		layout.addView(appname,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-		layout.addView(version,LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
-
-		AlertDialog.Builder ad = new AlertDialog.Builder(context)
-		.setTitle("About")
-		.setView(layout)
-		.setPositiveButton(android.R.string.ok,null);
 		ad.show();
 	}
 }
