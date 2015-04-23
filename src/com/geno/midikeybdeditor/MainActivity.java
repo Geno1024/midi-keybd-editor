@@ -92,8 +92,6 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		com.geno.tools.About a = new com.geno.tools.About();
-		a.about("",MainActivity.this);
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -168,6 +166,28 @@ public class MainActivity extends Activity
 				}
 			}
 		);
+	}
+
+	//Menus
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		getMenuInflater().inflate(R.menu.menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item)
+	{
+		switch(item.getItemId())
+		{
+			case R.id.about:
+				com.geno.tools.About a = new com.geno.tools.About();
+				a.about("",MainActivity.this);
+				break;
+		}
+		return super.onMenuItemSelected(featureId, item);
 	}
 
 	//Many necessary functions

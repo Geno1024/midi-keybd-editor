@@ -32,6 +32,7 @@
 	<string name="save">Save</string>
 	<string name="addmidievent">Add MIDI Event</string>
 	<string name="addmetaevent">Add Meta event</string>
+	<string name="about">About</string>
 
 	<!--Status names-->
 	<string name="finish">Finish!</string>

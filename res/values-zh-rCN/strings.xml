@@ -33,6 +33,7 @@
 	<string name="addmidievent">添加MIDI事件</string>
 	<string name="addmetaevent">添加元事件</string>
 	<string name="inputastring">Please input some text messages.</string>
+	<string name="about">关于</string>
 
 	<!--Status names-->
 	<string name="finish">完成！</string>
