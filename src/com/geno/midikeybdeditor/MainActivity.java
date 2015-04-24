@@ -628,20 +628,12 @@ public class MainActivity extends Activity
 	{
 		String res = "";
 		int i;
-		ProgressDialog s = new ProgressDialog(MainActivity.this);
-		
 		for(i=0;i<b.position();i++)
 		{
-			String buf = Integer.toHexString(b.get(i)).toUpperCase();
+			String buf = Integer.toHexString(b.get(i)&0xFF).toUpperCase();
 			if(buf.length()<2)
 				buf="0"+buf;
-			if(buf.length()==2)
-				res=res+buf;
-			else
-				res=res+buf.substring(6,8);
-			res=res+" ";
-			s.setProgress(i/b.position()*10000);
-			s.show();
+			res=res+buf+" ";
 		}
 		return res;
 	}
