@@ -2,17 +2,15 @@ package com.geno.midikeybdeditor;
 
 import android.app.*;
 import android.content.*;
-import android.content.pm.*;
-import android.graphics.*;
-import android.graphics.drawable.*;
 import android.os.*;
 import android.text.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
-import android.widget.LinearLayout.*;
 import java.io.*;
 import java.nio.*;
+import org.apache.http.util.*;
+import android.graphics.*;
 
 public class MainActivity extends Activity
 {
@@ -85,6 +83,7 @@ public class MainActivity extends Activity
 
 	//	Init display
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
+		src.setTypeface(Typeface.MONOSPACE);
 		update();
 		WindowManager m = (WindowManager)getSystemService(WINDOW_SERVICE);
 		expl.setWidth(m.getDefaultDisplay().getWidth()/2);
@@ -92,6 +91,7 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
+		open();
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -628,16 +628,20 @@ public class MainActivity extends Activity
 	{
 		String res = "";
 		int i;
+		ProgressDialog s = new ProgressDialog(MainActivity.this);
+		
 		for(i=0;i<b.position();i++)
 		{
 			String buf = Integer.toHexString(b.get(i)).toUpperCase();
 			if(buf.length()<2)
 				buf="0"+buf;
-			if(buf.contains("FFFFFF")==false)
+			if(buf.length()==2)
 				res=res+buf;
 			else
 				res=res+buf.substring(6,8);
 			res=res+" ";
+			s.setProgress(i/b.position()*10000);
+			s.show();
 		}
 		return res;
 	}
