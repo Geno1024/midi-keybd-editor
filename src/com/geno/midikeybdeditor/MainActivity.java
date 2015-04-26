@@ -2,6 +2,7 @@ package com.geno.midikeybdeditor;
 
 import android.app.*;
 import android.content.*;
+import android.graphics.*;
 import android.os.*;
 import android.text.*;
 import android.view.*;
@@ -9,8 +10,6 @@ import android.view.View.*;
 import android.widget.*;
 import java.io.*;
 import java.nio.*;
-import org.apache.http.util.*;
-import android.graphics.*;
 
 public class MainActivity extends Activity
 {
