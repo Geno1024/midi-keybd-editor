@@ -71,4 +71,14 @@ public class Progress
 		"8x +1","8x +2","8x +3","8x +4","8x +5",
 	};
 
+	public static class updateStatus
+	{
+		public static int initSrc = 0;
+
+		public static int initExpl = 1;
+
+		public static int addSrc = 2;
+
+		public static int addExpl = 3;
+	}
 }

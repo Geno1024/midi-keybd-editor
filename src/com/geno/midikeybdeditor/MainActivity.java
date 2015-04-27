@@ -38,7 +38,9 @@ public class MainActivity extends Activity
 	*	because view hierarchy
 	*/
 	public ByteBuffer eventBuf;
+	public String eventBuf2str;
 	public StringBuffer eventnameBuf;
+	public String eventnameBuf2str;
 	//	If input an event at middle	not EOF
 	public int eventPosition;
 
@@ -49,10 +51,17 @@ public class MainActivity extends Activity
 		{
 			switch (msg.what) 
 			{
-				case 1:
-					expl.setText(2+"");
-					expl.setText(R.string.analyzing);
+				case 0:
 					src.setText(innerSrc);
+					break;
+				case 1:
+					expl.setText(innerExpl);
+					break;
+				case 2:
+					src.setText(src.getText().toString()+eventBuf2str);
+					break;
+				case 3:
+					expl.setText(expl.getText().toString()+eventnameBuf2str);
 					break;
 			}
 		}
@@ -115,7 +124,7 @@ public class MainActivity extends Activity
 	//	Init display
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
 		src.setTypeface(Typeface.MONOSPACE);
-		update();
+		init();
 		expl.setWidth(((WindowManager)getSystemService(WINDOW_SERVICE)).getDefaultDisplay().getWidth()/2);
 		src.setWidth(((WindowManager)getSystemService(WINDOW_SERVICE)).getDefaultDisplay().getWidth()/2);
 
@@ -224,20 +233,23 @@ public class MainActivity extends Activity
 
 	//Many necessary functions
 
-	void update()
+	void init()
 	{
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
-		Thread updateThread = new Thread() 
+		Thread initThread = new Thread() 
 		{
 			@Override
 			public void run() 
 			{
-				a =printbyte(midi);
-				analyze.sendEmptyMessageDelayed(1, 0);
+				innerSrc=printbyte(midi);
+				analyze.sendEmptyMessage(Progress.updateStatus.initSrc);
 			}
 		};
-		updateThread.start();
+		initThread.start();
 	}
+
+	void update()
+	{}
 
 	void addevent()
 	{
@@ -693,6 +705,16 @@ public class MainActivity extends Activity
 	void toast(String innerText)
 	{
 		Toast.makeText(MainActivity.this,innerText,Toast.LENGTH_SHORT).show();
+	}
+
+	String printarr(String[] src)
+	{
+		String res="";
+		for(int i = 0;i<src.length;i++)
+		{
+			res=res+src[i];
+		}
+		return res;
 	}
 
 	//File function
