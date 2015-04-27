@@ -148,10 +148,41 @@ public class MainActivity extends Activity
 					(selectevent, new DialogInterface.OnClickListener()
 						{
 							@Override
-							public void onClick(DialogInterface p1, int p2)
+							public void onClick(DialogInterface p1, final int p2)
 							{
 								flag=1;
-								eventchk(p2);
+								eventnotebuffer.position(0);
+								AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
+								.setTitle(R.string.track)
+								.setItems
+								(Progress.trackno,new DialogInterface.OnClickListener()
+									{
+										@Override
+										public void onClick(DialogInterface p3, int p4)
+										{
+											eventnotebuffer.put((byte)(eventdefinedvalue[p2]+p4));
+											switch(p2)
+											{
+												case 0x8-0x8:
+													noteid();
+													break;
+												case 0x9-0x8:
+													noteid();
+													break;
+												case 0xA-0x8:
+													noteid();
+													break;
+												case 0xB-0x8:
+													ctrlchg();
+													break;
+												case 0xC-0x8:
+													prgmchg();
+													break;
+											}
+										}
+									}
+								);
+								ad.show();
 							}
 						}
 					);
@@ -253,7 +284,20 @@ public class MainActivity extends Activity
 	}
 
 	void update()
-	{}
+	{
+		detail.setText(remain+midi.remaining()+" "+use+midi.position());
+		expl.setText(R.string.analyzing);
+		Thread initThread = new Thread() 
+		{
+			@Override
+			public void run() 
+			{
+				innerSrc=printbyte(midi);
+				analyze.sendEmptyMessage(Progress.updateStatus.initSrc);
+			}
+		};
+		initThread.start();
+	}
 
 	void addevent()
 	{
@@ -353,42 +397,6 @@ public class MainActivity extends Activity
 			}
 		)
 		.setNegativeButton(android.R.string.cancel,null);
-		ad.show();
-	}
-
-	void eventchk(final int eventid)
-	{
-		eventnotebuffer.position(0);
-		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
-		.setTitle(R.string.track)
-		.setItems
-		(Progress.trackno,new DialogInterface.OnClickListener()
-			{
-				@Override
-				public void onClick(DialogInterface p1, int p2)
-				{
-					eventnotebuffer.put((byte)(eventdefinedvalue[eventid]+p2));
-					switch(eventid)
-					{
-						case 0x8-0x8:
-							noteid();
-							break;
-						case 0x9-0x8:
-							noteid();
-							break;
-						case 0xA-0x8:
-							noteid();
-							break;
-						case 0xB-0x8:
-							ctrlchg();
-							break;
-						case 0xC-0x8:
-							prgmchg();
-							break;
-					}
-				}
-			}
-		);
 		ad.show();
 	}
 
