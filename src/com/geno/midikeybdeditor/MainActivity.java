@@ -28,6 +28,7 @@ public class MainActivity extends Activity
 	public String[][] insname;
 	public String innerExpl,innerSrc;
 	public String diffExpl,diffSrc;
+	public float progressInInit;
 
 	/*	New a thread for analysing MIDI opcode
 	*	Analysing in UI Thread
@@ -57,12 +58,12 @@ public class MainActivity extends Activity
 				case 1:
 					expl.setText(innerExpl);
 					break;
-				case 2:
+				/*case 2:
 					src.setText(src.getText().toString()+eventBuf2str);
 					break;
 				case 3:
 					expl.setText(expl.getText().toString()+eventnameBuf2str);
-					break;
+					break;*/
 			}
 		}
 	};
@@ -227,6 +228,8 @@ public class MainActivity extends Activity
 				com.geno.tools.About a = new com.geno.tools.About();
 				a.about("",MainActivity.this);
 				break;
+			case R.id.open:
+				open();
 		}
 		return super.onMenuItemSelected(featureId, item);
 	}
@@ -236,6 +239,7 @@ public class MainActivity extends Activity
 	void init()
 	{
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
+		expl.setText(R.string.analyzing);
 		Thread initThread = new Thread() 
 		{
 			@Override
@@ -693,6 +697,23 @@ public class MainActivity extends Activity
 		return res;
 	}
 
+	Thread printByte = new Thread() 
+	{
+		@Override
+		public void run() 
+		{
+			String res = "";
+			int i;
+			for(i=0;i<midi.position();i++)
+			{
+				String buf = Integer.toHexString(midi.get(i)&0xFF).toUpperCase();
+				if(buf.length()<2)
+					buf="0"+buf;
+				res=res+buf+" ";
+			}
+		}
+	};
+
 	String printbytearr(byte[] input)
 	{
 		String output = "";
@@ -802,7 +823,7 @@ public class MainActivity extends Activity
 					{}
 					midi.position(0);
 					midi.put(b);
-					update();
+					init();
 					Toast.makeText(MainActivity.this,R.string.finish,Toast.LENGTH_SHORT).show();
 				}
 			}
