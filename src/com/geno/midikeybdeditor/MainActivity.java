@@ -26,6 +26,38 @@ public class MainActivity extends Activity
 	public ByteBuffer eventnotebuffer;
 	public String[] insfaminame,metaevents;
 	public String[][] insname;
+	public String innerExpl,innerSrc;
+	public String diffExpl,diffSrc;
+
+	/*	New a thread for analysing MIDI opcode
+	*	Analysing in UI Thread
+	*	WILL CAUSE ANR
+	*	So I am forced to new another thread
+	*	to analyze
+	*	and a Handler to update UI
+	*	because view hierarchy
+	*/
+	public ByteBuffer eventBuf;
+	public StringBuffer eventnameBuf;
+	//	If input an event at middle	not EOF
+	public int eventPosition;
+
+	public Handler analyze = new Handler()
+	{
+		@Override
+		public void handleMessage(Message msg) 
+		{
+			switch (msg.what) 
+			{
+				case 1:
+					expl.setText(2+"");
+					expl.setText(R.string.analyzing);
+					src.setText(innerSrc);
+					break;
+			}
+		}
+	};
+	
 
 	/*	This integer is an important flag in this program
 	*	for checking if this nesting functions below
@@ -84,13 +116,14 @@ public class MainActivity extends Activity
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
 		src.setTypeface(Typeface.MONOSPACE);
 		update();
-		WindowManager m = (WindowManager)getSystemService(WINDOW_SERVICE);
-		expl.setWidth(m.getDefaultDisplay().getWidth()/2);
-		src.setWidth(m.getDefaultDisplay().getWidth()/2);
+		expl.setWidth(((WindowManager)getSystemService(WINDOW_SERVICE)).getDefaultDisplay().getWidth()/2);
+		src.setWidth(((WindowManager)getSystemService(WINDOW_SERVICE)).getDefaultDisplay().getWidth()/2);
 
 	//	The func below are being tested
 		flag=1;
 		open();
+		com.geno.tools.Debug a = new com.geno.tools.Debug();
+		a.compileCount(this);
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -190,10 +223,20 @@ public class MainActivity extends Activity
 	}
 
 	//Many necessary functions
+
 	void update()
 	{
 		detail.setText(remain+midi.remaining()+" "+use+midi.position());
-		src.setText(printbyte(midi));
+		Thread updateThread = new Thread() 
+		{
+			@Override
+			public void run() 
+			{
+				a =printbyte(midi);
+				analyze.sendEmptyMessageDelayed(1, 0);
+			}
+		};
+		updateThread.start();
 	}
 
 	void addevent()
@@ -623,6 +666,7 @@ public class MainActivity extends Activity
 	*	but later it will have its responsibility
 	*	of DECODING A MIDI
 	*/
+	//	Will this be a new thread?
 	String printbyte(ByteBuffer b)
 	{
 		String res = "";

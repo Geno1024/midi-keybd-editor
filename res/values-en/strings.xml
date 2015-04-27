@@ -42,6 +42,7 @@
 	<string name="notamidi">This file is NOT a MIDI!</string>
 	<string name="illegalnumfmt">Number format ILLEGAL!</string>
 	<string name="inputastring">Please input some text messages.</string>
+	<string name="analyzing">Analysing...</string>
 
 	<!--Intro strings-->
 	<string name="newval">New Value</string>

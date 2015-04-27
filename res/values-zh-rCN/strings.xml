@@ -34,6 +34,7 @@
 	<string name="addmetaevent">添加元事件</string>
 	<string name="inputastring">Please input some text messages.</string>
 	<string name="about">关于</string>
+	<string name="analyzing">分析中...</string>
 
 	<!--Status names-->
 	<string name="finish">完成！</string>
