@@ -58,12 +58,12 @@ public class MainActivity extends Activity
 				case 1:
 					expl.setText(innerExpl);
 					break;
-				/*case 2:
+				case 2:
 					src.setText(src.getText().toString()+eventBuf2str);
 					break;
 				case 3:
 					expl.setText(expl.getText().toString()+eventnameBuf2str);
-					break;*/
+					break;
 			}
 		}
 	};
@@ -163,21 +163,11 @@ public class MainActivity extends Activity
 											eventnotebuffer.put((byte)(eventdefinedvalue[p2]+p4));
 											switch(p2)
 											{
-												case 0x8-0x8:
-													noteid();
-													break;
-												case 0x9-0x8:
-													noteid();
-													break;
-												case 0xA-0x8:
-													noteid();
-													break;
-												case 0xB-0x8:
-													ctrlchg();
-													break;
-												case 0xC-0x8:
-													prgmchg();
-													break;
+												case 0x8-0x8:noteid();break;
+												case 0x9-0x8:noteid();break;
+												case 0xA-0x8:noteid();break;
+												case 0xB-0x8:ctrlchg();break;
+												case 0xC-0x8:prgmchg();break;
 											}
 										}
 									}
@@ -206,31 +196,14 @@ public class MainActivity extends Activity
 							{
 								switch(Progress.metaEventStatus[p2])
 								{
-									case 0x01:
-										getMessage(0x01);
-										break;
-									case 0x02:
-										getMessage(0x02);
-										break;
-									case 0x03:
-										getMessage(0x03);
-										break;
-									case 0x04:
-										getMessage(0x04);
-										break;
-									case 0x05:
-										getMessage(0x05);
-										break;
-									case 0x06:
-										getMessage(0x06);
-										break;
-									case 0x07:
-										getMessage(0x07);
-										break;
-									case 0x2f:
-										midi.put(new byte[]{ubtosb(0xff),0x2f,0});
-										update();
-										break;
+									case 0x01:getMessage(0x01);break;
+									case 0x02:getMessage(0x02);break;
+									case 0x03:getMessage(0x03);break;
+									case 0x04:getMessage(0x04);break;
+									case 0x05:getMessage(0x05);break;
+									case 0x06:getMessage(0x06);break;
+									case 0x07:getMessage(0x07);break;
+									case 0x2f:midi.put(new byte[]{ubtosb(0xff),0x2f,0});update();break;
 								}
 							}
 						}
@@ -711,8 +684,7 @@ public class MainActivity extends Activity
 		public void run() 
 		{
 			String res = "";
-			int i;
-			for(i=0;i<midi.position();i++)
+			for(int i=0;i<midi.position();i++)
 			{
 				String buf = Integer.toHexString(midi.get(i)&0xFF).toUpperCase();
 				if(buf.length()<2)
