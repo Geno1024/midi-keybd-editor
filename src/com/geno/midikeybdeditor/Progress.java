@@ -42,7 +42,7 @@ public class Progress
 		0x00,0x06,//6 bytes
 	};
 
-	public static String[] notedefinedname = 
+	public static final String[] notedefinedname = 
 	{
 		"C",
 			"C#",
@@ -58,27 +58,27 @@ public class Progress
 		"B",
 	};
 
-	public static String[] trackno = 
+	public static final String[] trackno = 
 	{
 		"0","1","2","3","4","5","6","7",
 		"8","9","10","11","12","13","14","15"
 	};
 
-	public static String[] note12 = 
+	public static final String[] note12 = 
 	{
 		"8x -5","8x -4","8x -3","8x -2","8x -1",
 		"8x ±0",
 		"8x +1","8x +2","8x +3","8x +4","8x +5",
 	};
 
-	public static class updateStatus
+	public static final class updateStatus
 	{
-		public static int initSrc = 0;
+		public static final int initSrc = 0;
 
-		public static int initExpl = 1;
+		public static final int initExpl = 1;
 
-		public static int addSrc = 2;
+		public static final int addSrc = 2;
 
-		public static int addExpl = 3;
+		public static final int addExpl = 3;
 	}
 }

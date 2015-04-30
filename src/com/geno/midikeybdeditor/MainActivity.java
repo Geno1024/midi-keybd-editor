@@ -52,16 +52,16 @@ public class MainActivity extends Activity
 		{
 			switch (msg.what) 
 			{
-				case 0:
+				case Progress.updateStatus.initSrc:
 					src.setText(innerSrc);
 					break;
-				case 1:
+				case Progress.updateStatus.initExpl:
 					expl.setText(innerExpl);
 					break;
-				case 2:
+				case Progress.updateStatus.addSrc:
 					src.setText(src.getText().toString()+eventBuf2str);
 					break;
-				case 3:
+				case Progress.updateStatus.addExpl:
 					expl.setText(expl.getText().toString()+eventnameBuf2str);
 					break;
 			}
