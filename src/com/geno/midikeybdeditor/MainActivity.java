@@ -67,7 +67,6 @@ public class MainActivity extends Activity
 			}
 		}
 	};
-	
 
 	/*	This integer is an important flag in this program
 	*	for checking if this nesting functions below
@@ -266,7 +265,7 @@ public class MainActivity extends Activity
 			public void run() 
 			{
 				innerSrc=printbyte(midi);
-				analyze.sendEmptyMessage(Progress.updateStatus.initSrc);
+				analyze.sendEmptyMessage(Progress.updateStatus.addSrc);
 			}
 		};
 		initThread.start();
