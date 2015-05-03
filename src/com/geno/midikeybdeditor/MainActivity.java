@@ -131,8 +131,7 @@ public class MainActivity extends Activity
 	//	The func below are being tested
 		flag=1;
 		open();
-		com.geno.tools.Debug a = new com.geno.tools.Debug();
-		a.compileCount(this);
+		com.geno.tools.Debug.compileCount(this);
 
 	//	Edit widget
 		addevent.setOnClickListener
@@ -228,8 +227,7 @@ public class MainActivity extends Activity
 		switch(item.getItemId())
 		{
 			case R.id.about:
-				com.geno.tools.About a = new com.geno.tools.About();
-				a.about("",MainActivity.this);
+				com.geno.tools.About.about("",MainActivity.this);
 				break;
 			case R.id.open:
 				open();
