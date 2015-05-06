@@ -231,6 +231,13 @@ public class MainActivity extends Activity
 				break;
 			case R.id.open:
 				open();
+				break;
+			case R.id.save:
+				save();
+				break;
+			case R.id.help:
+				startActivity(new Intent(MainActivity.this,Help.class));
+				break;
 		}
 		return super.onMenuItemSelected(featureId, item);
 	}

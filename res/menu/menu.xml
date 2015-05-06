@@ -6,5 +6,11 @@
 	<item
 		android:id="@+id/open"
 		android:title="@string/open"/>
+	<item
+		android:id="@+id/save"
+		android:title="@string/save"/>
+	<item
+		android:id="@+id/help"
+		android:title="@string/help"/>
 
 </menu>

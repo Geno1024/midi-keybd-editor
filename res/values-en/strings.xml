@@ -229,6 +229,9 @@
 	<string name="inst7F">7F Gunshot</string>
 
 	<!--Help nessages-->
+	<string name="help">Help Messages</string>
 	<string name="help_1">1. 什么是MIDI？</string>
+	<string name="help_1_1">MIDI, 即Musical Instrument Digital Interface者。
+		啦</string>
 </resources>
 
