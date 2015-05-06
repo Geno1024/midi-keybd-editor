@@ -227,5 +227,8 @@
 	<string name="inst7D">7D Helicopter</string>
 	<string name="inst7E">7E Applause</string>
 	<string name="inst7F">7F Gunshot</string>
+
+	<!--Help nessages-->
+	<string name="help_1">1. 什么是MIDI？</string>
 </resources>
 
