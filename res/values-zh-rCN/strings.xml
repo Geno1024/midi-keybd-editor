@@ -228,15 +228,15 @@
 	<string name="inst7E">7E 鼓掌声</string>
 	<string name="inst7F">7F 枪声</string>
 
-	<!--Help nessages-->
+	<!--Help messages-->
 	<string name="help">帮助信息</string>
 	<string name="help_1">1. 什么是MIDI？</string>
-	<string name="help_1_1">    这些东西想必大家都知道啦所以我就不说太多不然你们也都看得眼睛生茧子啦。\n
+	<string name="help_2">2. 接口怎么变成文件啦？</string>
+	<string name="help_3">3. </string>
+	<string name="innerhelp_1_1">    这些东西想必大家都知道啦所以我就不说太多不然你们也都看得眼睛生茧子啦。\n
 		MIDI, 即 Musical Instrument Digital Interface 者，中文译为“乐器数字接口”。\n
 		所以，它只是一个接口而已，或者说就只是一条线，连接着两个设备而已。\n</string>
-	<string name="help_2">2. 接口怎么变成文件啦？</string>
-	<string name="help_2_1">    将传输的内容写在一个文件里，再增加一些必要的东西，比如文件头等等，它就变成一个文件了。
+	<string name="innerhelp_2_1">    将传输的内容写在一个文件里，再增加一些必要的东西，比如文件头等等，它就变成一个文件了。
 		严格地说，“ MIDI 文件”这个说法是错的，正确说法是“ Standard MIDI File ”，即“标准 MIDI 文件”。\n</string>
-	<string name="help_3">3. </string>
 </resources>
 

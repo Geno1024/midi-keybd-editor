@@ -81,4 +81,10 @@ public class Progress
 
 		public static final int addExpl = 3;
 	}
+
+	public static final int helpTitleCount = 0;
+
+	public static int helpInnerTextCount;
+	
 }
+
