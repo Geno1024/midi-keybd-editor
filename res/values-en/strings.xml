@@ -229,9 +229,9 @@
 	<string name="inst7F">7F Gunshot</string>
 
 	<!--Help messages-->
-	<string name="help">帮助信息</string>
-	<string name="help_1">1. 什么是MIDI？</string>
-	<string name="help_2">2. 接口怎么变成文件啦？</string>
+	<string name="help">Help Messages</string>
+	<string name="help_1">1. What\'s MIDI?</string>
+	<string name="help_2">2. Why an interface become a file?</string>
 	<string name="help_3">3. </string>
 	<string name="innerhelp_1_1">    这些东西想必大家都知道啦所以我就不说太多不然你们也都看得眼睛生茧子啦。\n
 		MIDI, 即 Musical Instrument Digital Interface 者，中文译为“乐器数字接口”。\n
