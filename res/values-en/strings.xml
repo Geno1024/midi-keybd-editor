@@ -236,7 +236,7 @@
 	<string name="innerhelp_1_1">    这些东西想必大家都知道啦所以我就不说太多不然你们也都看得眼睛生茧子啦。\n
 		MIDI,which full name is \" Musical Instrument Digital Interface \".\n
 		So it\'s just an interface, or a line connecting two devices.\n</string>
-	<string name="innerhelp_2_1">    将传输的内容写在一个文件里，再增加一些必要的东西，比如文件头等等，它就变成一个文件了。
-		严格地说，“ MIDI 文件”这个说法是错的，正确说法是“ Standard MIDI File ”，即“标准 MIDI 文件”。\n</string>
+	<string name="innerhelp_2_1">Write what we want to tramsfer into a file, then add some necessity such as file header, it become a file soon.
+		严格地说，“ MIDI 文件 ”这个说法是错的，正确说法是“ Standard MIDI File ”，即“标准 MIDI 文件”。\n</string>
 </resources>
 

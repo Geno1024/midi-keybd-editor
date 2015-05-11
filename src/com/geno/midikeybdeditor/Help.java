@@ -1,7 +1,7 @@
 package com.geno.midikeybdeditor;
 
-import android.app.*;
 import android.os.*;
+import android.app.*;
 import android.view.*;
 import android.widget.*;
 import android.database.*;
@@ -150,3 +150,4 @@ public class Help extends Activity
 	}
 
 }
+
