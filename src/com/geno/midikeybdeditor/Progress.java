@@ -84,7 +84,10 @@ public class Progress
 
 	public static final int helpTitleCount = 0;
 
-	public static int helpInnerTextCount;
+	public static final int[] helpInnerTextCount = 
+	{
+		1,1,1,
+	};
 	
 }
 

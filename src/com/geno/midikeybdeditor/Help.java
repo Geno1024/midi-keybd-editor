@@ -9,7 +9,7 @@ import android.database.*;
 public class Help extends Activity
 {
 	public String[] helpTitle;
-	public String[][] helpInnerText;
+	public String[] helpInnerText;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -17,10 +17,7 @@ public class Help extends Activity
 		{
 			helpTitle[i]=getString(R.string.help_1)+i;
 		}
-		for(int i = 0;i < Progress.helpInnerTextCount;i++)
-		{
-			
-		}
+		
 		LinearLayout main=new LinearLayout(this);
 
 		ExpandableListView e=new ExpandableListView(this);
