@@ -130,7 +130,11 @@ public class MainActivity extends Activity
 
 	//	The func below are being tested
 		flag=1;
-		byte[] i = com.geno.midikeybdeditor.FileIO.open(this);
+		byte[] i = ;
+		midi.position(0);
+		com.geno.midikeybdeditor.FileIO.open(this,i);
+		midi.put(i);
+		init();
 		com.geno.tools.Debug.compileCount(this);
 
 	//	Edit widget

@@ -4,13 +4,10 @@ import android.app.*;
 import android.content.*;
 import android.widget.*;
 import java.io.*;
-import java.nio.*;
 
 public class FileIO
 {
-	public static byte[] b;
-
-	public static final byte[] open(final Context c)
+	public static void open(final Context c, final byte[] toWrite)
 	{
 		final EditText t = new EditText(c);
 		AlertDialog.Builder ad = new AlertDialog.Builder(c)
@@ -28,14 +25,14 @@ public class FileIO
 					{
 						i = new BufferedInputStream(new FileInputStream(f));
 					}
-					catch(FileNotFoundException e)
+					catch(Exception e)
 					{
 						Toast.makeText(c,R.string.filenotfound,Toast.LENGTH_SHORT).show();
+						return;
 					}
-					b = new byte[(int)f.length()];
 					try
 					{
-						i.read(b);
+						i.read(toWrite);
 						i.close();
 					}
 					catch (Exception e)
@@ -46,6 +43,6 @@ public class FileIO
 		)
 		.setNegativeButton(android.R.string.cancel,null);
 		ad.show();
-		return b;
 	}
 }
+
