@@ -85,6 +85,7 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		com.geno.tools.Debug.compileCount(this);
 
 	//	Get string res
 		remain = getString(R.string.remain);
@@ -131,12 +132,10 @@ public class MainActivity extends Activity
 	//	The func below are being tested
 		flag=1;
 		midi.position(0);
-		byte[] i=com.geno.midikeybdeditor.FileIO.open(this);
-//		expl.setText(printbytearr(i));
-//		midi.put(i);
+		com.geno.midikeybdeditor.FileIO f = new com.geno.midikeybdeditor.FileIO();
+		byte[] i = f.open(this);
 		toast(i.length+"");
 		init();
-		com.geno.tools.Debug.compileCount(this);
 
 	//	Edit widget
 		addevent.setOnClickListener

@@ -7,9 +7,58 @@ import java.io.*;
 
 public class FileIO extends Activity
 {
-
-	private static byte[] out;
-	public static byte[] open(final Context c)
+	public byte[] out;
+	public byte[] open(final Context c)
+	{
+		final EditText t = new EditText(c);
+		AlertDialog.Builder ad = new AlertDialog.Builder(c)
+			.setTitle(R.string.open)
+			.setView(t)
+			.setPositiveButton
+		(android.R.string.ok,new DialogInterface.OnClickListener()
+			{
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					File f = new File(t.getText().toString());
+					InputStream i = null;
+					try
+					{
+						i = new BufferedInputStream(new FileInputStream(f));
+					}
+					catch(FileNotFoundException e)
+					{
+						Toast.makeText(c,R.string.filenotfound,Toast.LENGTH_SHORT).show();
+					}
+					try
+					{
+						i.read(out);
+						i.close();
+					}
+					catch(Exception e)
+					{
+						
+					}
+					/*
+					ByteBuffer b=null;
+					b = ByteBuffer.allocate((int)f.length());
+					try
+					{
+						i.read(b.array());
+						i.close();
+					}
+					catch (Exception e)
+					{}
+					*/
+					Toast.makeText(c,R.string.finish,Toast.LENGTH_SHORT).show();
+				}
+			}
+		)
+			.setNegativeButton(android.R.string.cancel,null);
+		ad.show();
+		return out;
+	}
+	/*public byte[] open(final Context c)
 	{
 		final EditText t = new EditText(c);
 		AlertDialog.Builder ad = new AlertDialog.Builder(c)
@@ -25,7 +74,7 @@ public class FileIO extends Activity
 					try
 					{
 						f = new FileInputStream(t.getText().toString());
-						final byte[] out = new byte[f.available()];
+						out = new byte[f.available()];
 						f.read(out);
 						f.close();
 					}
@@ -50,7 +99,7 @@ public class FileIO extends Activity
 						i.close();
 					}
 					catch (Exception e)
-					{}*/
+					{}
 					Toast.makeText(c,R.string.finish,Toast.LENGTH_SHORT).show();
 				}
 			}
@@ -58,7 +107,7 @@ public class FileIO extends Activity
 		.setNegativeButton(android.R.string.cancel,null);
 		ad.show();
 		return out;
-	}
+	}*/
 	/*public static byte[] open(String fileName) {
 		try
 		{
