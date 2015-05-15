@@ -233,10 +233,10 @@
 	<string name="help_1">1. What\'s MIDI?</string>
 	<string name="help_2">2. Why an interface become a file?</string>
 	<string name="help_3">3. </string>
-	<string name="innerhelp_1_1">    这些东西想必大家都知道啦所以我就不说太多不然你们也都看得眼睛生茧子啦。\n
+	<string name="helpans_1">    这些东西想必大家都知道啦所以我就不说太多不然你们也都看得眼睛生茧子啦。\n
 		MIDI,which full name is \" Musical Instrument Digital Interface \".\n
 		So it\'s just an interface, or a line connecting two devices.\n</string>
-	<string name="innerhelp_2_1">Write what we want to tramsfer into a file, then add some necessity such as file header, it become a file soon.
+	<string name="helpans_2">Write what we want to tramsfer into a file, then add some necessity such as file header, it become a file soon.
 		严格地说，“ MIDI 文件 ”这个说法是错的，正确说法是“ Standard MIDI File ”，即“标准 MIDI 文件”。\n</string>
 </resources>
 

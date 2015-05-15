@@ -9,62 +9,67 @@ import android.database.*;
 public class Help extends Activity
 {
 	public String[] helpTitle;
-	public String[] helpInnerText;
+	public String[] helpText;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
+		super.onCreate(savedInstanceState);
+		helpTitle = new String[Progress.helpTitleCount];
+		helpText = new String[Progress.helpTitleCount];
+
 		for(int i = 0;i < Progress.helpTitleCount;i++)
-		{
 			helpTitle[i]=getString(R.string.help_1)+i;
-		}
-		
+
+		for(int i = 0;i < Progress.helpTitleCount;i++)
+			helpText[i]=getString(R.string.helpans_1)+i;
+
 		LinearLayout main=new LinearLayout(this);
 
 		ExpandableListView e=new ExpandableListView(this);
 		ExpandableListAdapter a=new ExpandableListAdapter()
 		{
 			@Override
-			public void registerDataSetObserver(DataSetObserver p1)
+			public void registerDataSetObserver(DataSetObserver observer)
 			{
 			}
 
 			@Override
-			public void unregisterDataSetObserver(DataSetObserver p1)
+			public void unregisterDataSetObserver(DataSetObserver observer)
 			{
 			}
 
 			@Override
 			public int getGroupCount()
 			{
-				return 0;
+				return helpTitle.length;
 			}
 
 			@Override
-			public int getChildrenCount(int p1)
+			public int getChildrenCount(int groupPosition)
+			{
+				return 1;
+			}
+
+			@Override
+			public Object getGroup(int groupPosition)
+			{
+				return helpTitle[groupPosition];
+			}
+
+			@Override
+			public Object getChild(int groupPosition, int childPosition)
+			{
+				return helpText[groupPosition];
+			}
+
+			@Override
+			public long getGroupId(int groupPosition)
 			{
 				return 0;
 			}
 
 			@Override
-			public Object getGroup(int p1)
-			{
-				return null;
-			}
-
-			@Override
-			public Object getChild(int p1, int p2)
-			{
-				return null;
-			}
-
-			@Override
-			public long getGroupId(int p1)
-			{
-				return 0;
-			}
-
-			@Override
-			public long getChildId(int p1, int p2)
+			public long getChildId(int groupPosition, int childPosition)
 			{
 				return 0;
 			}
@@ -76,27 +81,35 @@ public class Help extends Activity
 			}
 
 			@Override
-			public View getGroupView(int p1, boolean p2, View p3, ViewGroup p4)
+			public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent)
 			{
-				return null;
+				LinearLayout l = new LinearLayout(Help.this);
+				TextView t = new TextView(Help.this);
+				t.setText(getGroup(groupPosition).toString());
+				l.addView(t);
+				return l;
 			}
 
 			@Override
-			public View getChildView(int p1, int p2, boolean p3, View p4, ViewGroup p5)
+			public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
 			{
-				return null;
+				LinearLayout l = new LinearLayout(Help.this);
+				TextView t = new TextView(Help.this);
+				t.setText(getChild(groupPosition,childPosition).toString());
+				l.addView(t);
+				return l;
 			}
 
 			@Override
-			public boolean isChildSelectable(int p1, int p2)
+			public boolean isChildSelectable(int groupPosition, int childPosition)
 			{
-				return false;
+				return true;
 			}
 
 			@Override
 			public boolean areAllItemsEnabled()
 			{
-				return false;
+				return true;
 			}
 
 			@Override
@@ -106,23 +119,23 @@ public class Help extends Activity
 			}
 
 			@Override
-			public void onGroupExpanded(int p1)
+			public void onGroupExpanded(int groupPosition)
 			{
 			}
 
 			@Override
-			public void onGroupCollapsed(int p1)
+			public void onGroupCollapsed(int groupPosition)
 			{
 			}
 
 			@Override
-			public long getCombinedChildId(long p1, long p2)
+			public long getCombinedChildId(long groupId, long childId)
 			{
 				return 0;
 			}
 
 			@Override
-			public long getCombinedGroupId(long p1)
+			public long getCombinedGroupId(long groupId)
 			{
 				return 0;
 			}
@@ -130,7 +143,6 @@ public class Help extends Activity
 
 		e.setAdapter(a);
 		main.addView(e);
-		super.onCreate(savedInstanceState);
 		setContentView(main);
 	}
 

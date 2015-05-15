@@ -134,7 +134,7 @@ public class MainActivity extends Activity
 		midi.position(0);
 		com.geno.midikeybdeditor.FileIO f = new com.geno.midikeybdeditor.FileIO();
 		byte[] i = f.open(this);
-		toast(i.length+"");
+		//toast(i.length+"");
 		init();
 
 	//	Edit widget
