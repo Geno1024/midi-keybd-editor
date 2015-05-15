@@ -236,9 +236,9 @@
 	<string name="helpans_1">
 		So these things are all known to you all that I won\'t say too much.\n
 		MIDI,which full name is \" Musical Instrument Digital Interface \".\n
-		So it\'s just an interface, or a line connecting two devices.\n</string>
+		So it\'s just an interface, or a line connecting two devices.</string>
 	<string name="helpans_2">
 		Write what we want to tramsfer into a file, then add some necessity such as file header, it become a file soon.\n
-		Strictly speaking, the phrase \" MIDI file\" is wrong, which should be corrected into \" Standard MIDI File \".\n</string>
+		Strictly speaking, the phrase \" MIDI file\" is wrong, which should be corrected into \" Standard MIDI File \".</string>
 </resources>
 

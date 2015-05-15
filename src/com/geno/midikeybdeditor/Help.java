@@ -98,7 +98,7 @@ public class Help extends Activity
 				LinearLayout l = new LinearLayout(Help.this);
 				TextView t = new TextView(Help.this);
 				t.setText(getChild(groupPosition,childPosition).toString());
-				t.setPadding(100,0,0,0);
+				t.setPadding(100,10,0,10);
 				l.addView(t);
 				return l;
 			}

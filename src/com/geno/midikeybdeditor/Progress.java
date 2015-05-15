@@ -42,7 +42,7 @@ public class Progress
 		0x00,0x06,//6 bytes
 	};
 
-	public static final String[] notedefinedname = 
+	public static final String[] notename = 
 	{
 		"C",
 			"C#",

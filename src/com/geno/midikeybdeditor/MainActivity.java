@@ -393,7 +393,7 @@ public class MainActivity extends Activity
 		AlertDialog.Builder ad = new AlertDialog.Builder(MainActivity.this)
 		.setTitle(R.string.note)
 		.setItems
-		(Progress.notedefinedname,new DialogInterface.OnClickListener()
+		(Progress.notename,new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
