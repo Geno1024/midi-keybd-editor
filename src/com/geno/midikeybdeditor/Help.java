@@ -18,10 +18,10 @@ public class Help extends Activity
 		helpText = new String[Progress.helpTitleCount];
 
 		for(int i = 0;i < Progress.helpTitleCount;i++)
-			helpTitle[i]=getString(R.string.help_1)+i;
+			helpTitle[i]=getString(R.string.help_1+i);
 
 		for(int i = 0;i < Progress.helpTitleCount;i++)
-			helpText[i]=getString(R.string.helpans_1)+i;
+			helpText[i]=getString(R.string.helpans_1+i);
 
 		LinearLayout main=new LinearLayout(this);
 
@@ -41,7 +41,7 @@ public class Help extends Activity
 			@Override
 			public int getGroupCount()
 			{
-				return helpTitle.length;
+				return Progress.helpTitleCount;
 			}
 
 			@Override
@@ -86,7 +86,9 @@ public class Help extends Activity
 				LinearLayout l = new LinearLayout(Help.this);
 				TextView t = new TextView(Help.this);
 				t.setText(getGroup(groupPosition).toString());
-				l.addView(t);
+				t.setTextSize(20);
+				t.setPadding(50,10,0,10);
+				l.addView(t,((WindowManager)getSystemService(WINDOW_SERVICE)).getDefaultDisplay().getWidth(),LinearLayout.LayoutParams.WRAP_CONTENT);
 				return l;
 			}
 
@@ -96,6 +98,7 @@ public class Help extends Activity
 				LinearLayout l = new LinearLayout(Help.this);
 				TextView t = new TextView(Help.this);
 				t.setText(getChild(groupPosition,childPosition).toString());
+				t.setPadding(100,0,0,0);
 				l.addView(t);
 				return l;
 			}
