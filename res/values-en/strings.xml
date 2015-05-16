@@ -233,12 +233,10 @@
 	<string name="help_1">1. What\'s MIDI?</string>
 	<string name="help_2">2. Why an interface become a file?</string>
 	<string name="help_3">3. </string>
-	<string name="helpans_1">
-		So these things are all known to you all that I won\'t say too much.\n
-		MIDI,which full name is \" Musical Instrument Digital Interface \".\n
-		So it\'s just an interface, or a line connecting two devices.</string>
-	<string name="helpans_2">
-		Write what we want to tramsfer into a file, then add some necessity such as file header, it become a file soon.\n
-		Strictly speaking, the phrase \" MIDI file\" is wrong, which should be corrected into \" Standard MIDI File \".</string>
+	<string name="helpans_1_1">So these things are all known to you all that I won\'t say too much.</string>
+	<string name="helpans_1_2">MIDI,which full name is \" Musical Instrument Digital Interface \".</string>
+	<string name="helpans_1_3">So it\'s just an interface, or a line connecting two devices.</string>
+	<string name="helpans_2_1">Write what we want to tramsfer into a file, then add some necessity such as file header, it become a file soon.</string>
+	<string name="helpans_2_2">Strictly speaking, the phrase \" MIDI file\" is wrong, which should be corrected into \" Standard MIDI File \".</string>
 </resources>
 

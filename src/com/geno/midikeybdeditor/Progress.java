@@ -83,6 +83,12 @@ public class Progress
 	}
 
 	public static final int helpTitleCount = 2;
-	
+
+	public static final int[] helpTextCount = 
+	{
+		3, 2,
+	};
+
+	public static final int helpTextMax = 3;
 }
 

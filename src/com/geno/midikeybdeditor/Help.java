@@ -9,19 +9,20 @@ import android.database.*;
 public class Help extends Activity
 {
 	public String[] helpTitle;
-	public String[] helpText;
+	public String[][] helpText;
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		helpTitle = new String[Progress.helpTitleCount];
-		helpText = new String[Progress.helpTitleCount];
+		helpText = new String[Progress.helpTitleCount][Progress.helpTextMax];
 
 		for(int i = 0;i < Progress.helpTitleCount;i++)
 			helpTitle[i]=getString(R.string.help_1+i);
 
 		for(int i = 0;i < Progress.helpTitleCount;i++)
-			helpText[i]=getString(R.string.helpans_1+i);
+			for(int j = 0; j < Progress.helpTextCount[i];j++)
+				helpText[i][j]=getString(R.string.helpans_1_1+com.geno.tools.Math.sumInArray(Progress.helpTextCount,i)+j);
 
 		LinearLayout main=new LinearLayout(this);
 
@@ -47,7 +48,7 @@ public class Help extends Activity
 			@Override
 			public int getChildrenCount(int groupPosition)
 			{
-				return 1;
+				return Progress.helpTextCount[groupPosition];
 			}
 
 			@Override
@@ -59,7 +60,7 @@ public class Help extends Activity
 			@Override
 			public Object getChild(int groupPosition, int childPosition)
 			{
-				return helpText[groupPosition];
+				return helpText[groupPosition][childPosition];
 			}
 
 			@Override
