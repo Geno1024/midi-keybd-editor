@@ -371,7 +371,7 @@ public class MainActivity extends Activity
 					}
 					b.position(0);
 					midi.put(new byte[]{ubtosb(0xFF),ubtosb(metaEventId)});
-					midi.put(int2byte(hex2dec(variableLengthFormat(c.length))));
+					midi.put(int2byte(hex2dec(com.geno.tools.Math.variableLengthFormat(c.length))));
 					midi.put(b);
 					update();
 				}
@@ -588,20 +588,6 @@ public class MainActivity extends Activity
 	{
 		//	Unsigned byte to signed byte
 		return unsigned < 128 ? (byte)unsigned : (byte)(unsigned-256);
-	}
-
-	String variableLengthFormat(int input)
-	{
-		String s = Integer.toBinaryString(input);
-		while(s.length()<28)
-			s="0"+s;
-		s="1"+s;
-		s=s.substring(0,8)+"1"+s.substring(8);
-		s=s.substring(0,16)+"1"+s.substring(16);
-		s=s.substring(0,24)+"0"+s.substring(24);
-		while(s.startsWith("10000000"))
-			s=s.substring(8);
-		return Integer.toHexString(bin2hex(s));
 	}
 
 	byte[] int2byte(int hexint)
