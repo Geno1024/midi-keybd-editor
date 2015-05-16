@@ -65,19 +65,19 @@ public class Help extends Activity
 			@Override
 			public long getGroupId(int groupPosition)
 			{
-				return 0;
+				return 0x7e000000 + groupPosition * 0x00010000;
 			}
 
 			@Override
 			public long getChildId(int groupPosition, int childPosition)
 			{
-				return 0;
+				return 0x7e000000 + groupPosition * 0x00010000 + childPosition + 1;
 			}
 
 			@Override
 			public boolean hasStableIds()
 			{
-				return false;
+				return true;
 			}
 
 			@Override
