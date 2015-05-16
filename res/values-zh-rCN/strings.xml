@@ -230,13 +230,18 @@
 
 	<!--Help messages-->
 	<string name="help">帮助信息</string>
-	<string name="help_1">1. 什么是MIDI？</string>
-	<string name="help_2">2. 接口怎么变成文件啦？</string>
-	<string name="help_3">3. </string>
+	<string name="help_1">什么是MIDI？</string>
+	<string name="help_2">接口怎么变成文件啦？</string>
+	<string name="help_3">那个所谓的“可变长度格式”是个啥？</string>
 	<string name="helpans_1_1">这些东西想必大家都知道啦所以我就不说太多不然你们也都看得眼睛生茧子啦。</string>
 	<string name="helpans_1_2">MIDI, 即 Musical Instrument Digital Interface 者，中文译为“乐器数字接口”。</string>
 	<string name="helpans_1_3">所以，它只是一个接口而已，或者说就只是一条线，连接着两个设备而已。</string>
 	<string name="helpans_2_1">将传输的内容写在一个文件里，再增加一些必要的东西，比如文件头等等，它就变成一个文件了。</string>
 	<string name="helpans_2_2">严格地说，“ MIDI 文件”这个说法是错的，正确说法是“ Standard MIDI File ”，即“标准 MIDI 文件”。</string>
+	<string name="helpans_3_1">可变长度格式，是一种表示数的方式，它的长度是可变的。</string>
+	<string name="helpans_3_2">将一个数转换为二进制，然后从右向左每7位分段，当最左边一段不足7位时用零补足。</string>
+	<string name="helpans_3_3">然后在每一段开头加上1使它成为8位。最后一段除外，它要补的是0。</string>
+	<string name="helpans_3_4">如果需要的话，将它转化为十六进制。</string>
+	<string name="helpans_3_5">它可以表示任意长度的数，更重要的是你在表示比较小的数的时候不需要补一大堆0。</string>
 </resources>
 

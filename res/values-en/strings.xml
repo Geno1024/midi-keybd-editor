@@ -230,13 +230,18 @@
 
 	<!--Help messages-->
 	<string name="help">Help Messages</string>
-	<string name="help_1">1. What\'s MIDI?</string>
-	<string name="help_2">2. Why an interface become a file?</string>
-	<string name="help_3">3. </string>
+	<string name="help_1">What\'s MIDI?</string>
+	<string name="help_2">Why an interface become a file?</string>
+	<string name="help_3">What\'s that so-called \"Variable Length Format\"?</string>
 	<string name="helpans_1_1">So these things are all known to you all that I won\'t say too much.</string>
 	<string name="helpans_1_2">MIDI,which full name is \" Musical Instrument Digital Interface \".</string>
 	<string name="helpans_1_3">So it\'s just an interface, or a line connecting two devices.</string>
 	<string name="helpans_2_1">Write what we want to tramsfer into a file, then add some necessity such as file header, it become a file soon.</string>
 	<string name="helpans_2_2">Strictly speaking, the phrase \" MIDI file\" is wrong, which should be corrected into \" Standard MIDI File \".</string>
+	<string name="helpans_3_1">Variable Length Format, or VLF, is a way to express a number with variable length.</string>
+	<string name="helpans_3_2">Transform a number into binary, then cut it up into 7-bit-length pieces from right to left, add 0 at the leftest piece to make it 7-bit,</string>
+	<string name="helpans_3_3">then add 1 into the 8th bit every pieces but 0 at the rightest one.</string>
+	<string name="helpans_3_4">Change it into hexadecimal if needed.</string>
+	<string name="helpans_3_5">It can express a number with random length, and more importantly, with fewer 0 if number is small.</string>
 </resources>
 

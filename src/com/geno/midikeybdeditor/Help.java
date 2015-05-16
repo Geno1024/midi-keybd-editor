@@ -18,7 +18,7 @@ public class Help extends Activity
 		helpText = new String[Progress.helpTitleCount][Progress.helpTextMax];
 
 		for(int i = 0;i < Progress.helpTitleCount;i++)
-			helpTitle[i]=getString(R.string.help_1+i);
+			helpTitle[i]=(i + 1) + ". " + getString(R.string.help_1+i);
 
 		for(int i = 0;i < Progress.helpTitleCount;i++)
 			for(int j = 0; j < Progress.helpTextCount[i];j++)
