@@ -12,5 +12,7 @@
 	<item
 		android:id="@+id/help"
 		android:title="@string/help"/>
+	<item
+		android:id="@+id/exit"/>
 
 </menu>
