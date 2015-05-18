@@ -22,7 +22,7 @@ public class MainActivity extends Activity
 
 	//	These values are for functions
 	public byte eventvalue,notevalue,notelengthvalue;
-	public byte[] eventdefinedvalue = {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
+	public byte[] eventdefinedvalue;
 	public ByteBuffer eventnotebuffer;
 	public String[] insfaminame,metaevents;
 	public String[][] insname;
@@ -109,6 +109,7 @@ public class MainActivity extends Activity
 		for(int i = 0;i < Progress.metaEventStatus.length; i++)
 			metaevents[i]=getString(R.string.meta00+i);
 
+		eventdefinedvalue = new byte[] {ubtosb(0x80),ubtosb(0x90),ubtosb(0xA0),ubtosb(0xB0),ubtosb(0xC0),ubtosb(0xD0),ubtosb(0xE0)};
 	//	Get layout id
 		expl = (TextView)findViewById(R.id.explanation);
 		src = (TextView)findViewById(R.id.srccode);
@@ -132,8 +133,6 @@ public class MainActivity extends Activity
 	//	The func below are being tested
 		flag=1;
 		midi.position(0);
-		com.geno.midikeybdeditor.FileIO f = new com.geno.midikeybdeditor.FileIO();
-		byte[] i = f.open(this);
 		//toast(i.length+"");
 		init();
 
