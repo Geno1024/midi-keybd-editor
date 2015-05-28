@@ -4,18 +4,21 @@ import android.app.*;
 import android.content.*;
 import android.widget.*;
 import java.io.*;
+import android.view.View.*;
 
 public class FileIO extends Activity
 {
 	public byte[] r;
-	public final byte[] open(final Context c)
+
+	public byte[] open(Context co)
 	{
-		final EditText t = new EditText(c);
-		AlertDialog.Builder ad = new AlertDialog.Builder(c)
+		final EditText t = new EditText(co);
+		AlertDialog.Builder ad = new AlertDialog.Builder(co)
 		.setTitle(R.string.open)
 		.setView(t)
 		.setPositiveButton
-		(android.R.string.ok,new DialogInterface.OnClickListener()
+		(android.R.string.ok,
+			new DialogInterface.OnClickListener()
 			{
 				@Override
 				public void onClick(DialogInterface p1, int p2)
